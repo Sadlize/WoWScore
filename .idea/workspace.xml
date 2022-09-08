@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ddbd679b-4fd4-44a3-9e50-b9e55c702d08" name="Changes" comment="" />
+    <list default="true" id="ddbd679b-4fd4-44a3-9e50-b9e55c702d08" name="Changes" comment="Added cutoff ratings for UA/EU/TW/KR regions">
+      <change beforePath="$PROJECT_DIR$/src/API/RaiderIO.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/API/RaiderIO.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    </list>
+    <list id="33b41880-412d-497f-8a3d-23edb702c175" name="Ignore" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TODO_SCOPE": "All Places",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/VS/repos/WoWScore/src",
+    "last_opened_file_path": "E:/VS/repos/WoWScore",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -42,6 +48,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\VS\repos\WoWScore\src\API" />
+      <recent name="E:\VS\repos\WoWScore\src\hooks" />
       <recent name="E:\VS\repos\WoWScore\src" />
     </key>
   </component>
@@ -54,7 +62,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ddbd679b-4fd4-44a3-9e50-b9e55c702d08" name="Changes" comment="" />
-      <changelist id="" name="New changelist" comment="" />
+      <changelist id="33b41880-412d-497f-8a3d-23edb702c175" name="Ignore" comment="" />
       <created>1662617093846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -62,7 +70,32 @@
       <workItem from="1662617095075" duration="5000" />
       <workItem from="1662617108349" duration="600000" />
       <workItem from="1662617722733" duration="1739000" />
+      <workItem from="1662619514037" duration="322000" />
+      <workItem from="1662619846632" duration="5974000" />
+      <workItem from="1662625864240" duration="5665000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1662619714586</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662619714586</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Update Site Title">
+      <created>1662620381560</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662620381560</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added cutoff ratings for UA/EU/TW/KR regions">
+      <created>1662625504795</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662625504795</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,5 +111,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Update Site Title" />
+    <MESSAGE value="Added cutoff ratings for UA/EU/TW/KR regions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cutoff ratings for UA/EU/TW/KR regions" />
   </component>
 </project>
