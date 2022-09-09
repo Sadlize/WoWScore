@@ -12,7 +12,7 @@ export default class RaiderIO {
 
         for (let element in region) {
             let response = await axios.get('https://raider.io/api/v1/mythic-plus/season-cutoffs?season=season-sl-4&region=' + region[element])
-            result[region[element]] = response.data.cutoffs.p999.all.quantileMinValue
+            result[element] = response?.data?.cutoffs?.p999?.all?.quantileMinValue
         }
 
         return result
@@ -20,6 +20,7 @@ export default class RaiderIO {
 
     static async getCurrentAffixes() {
         let response = await axios.get('https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en')
-        return response.data.title
+        //return response.data.affix_details
+        return response.data
     }
 }

@@ -12,7 +12,7 @@ function App() {
     }
 
     const [cutoffScore, setCutoffScore] = useState({})
-    const [currentAffixes, setCurrentAffixes] = useState('')
+    const [currentAffixes, setCurrentAffixes] = useState({})
 
     const getCutoff = async (region) => {
         const response = await RaiderIO.getCutoff(region)
@@ -21,6 +21,7 @@ function App() {
 
     const getCurrentAffixes = async () => {
         const response = await RaiderIO.getCurrentAffixes()
+        console.log('Ответ с функции: ', response)
         setCurrentAffixes(response)
     }
 
@@ -33,7 +34,14 @@ function App() {
         <div className="App">
             <h1>WoWScore</h1>
             <h1>Affixes</h1>
-            <p>{currentAffixes}</p>
+            <p>7-14th September</p>
+            <img src={"https://wow.zamimg.com/images/wow/icons/large/ability_toughness.jpg"} alt={'Affix Tooltip'}/>
+            <img src={"https://wow.zamimg.com/images/wow/icons/large/spell_holy_prayerofspirit.jpg"} alt={'Affix Tooltip'}/>
+            <img src={"https://wow.zamimg.com/images/wow/icons/large/ability_backstab.jpg"} alt={'Affix Tooltip'}/>
+            <img src={"https://wow.zamimg.com/images/wow/icons/large/spell_shadow_nethercloak.jpg"} alt={'Affix Tooltip'}/>
+            {/*<img src={"https://render.worldofwarcraft.com/eu/icons/56/"+ currentAffixes + ".jpg"} alt={''}/>*/}
+
+            <p>{currentAffixes.title}</p>
             <h2>Cutoffs:</h2>
             <p>US: {cutoffScore.US}</p>
             <p>EU: {cutoffScore.EU}</p>
