@@ -5,7 +5,7 @@ export default class RaiderIO {
      * Returns cutoff value for each region in object
      *
      * @param region - Sampling from a given regions
-     * @returns {Promise<{}>} - Result of fetching all values
+     * @returns {Promise<{}>} - Result of fetching values for all regions
      */
     static async getCutoff(region) {
         let result = {}
@@ -20,7 +20,6 @@ export default class RaiderIO {
 
     static async getCurrentAffixes() {
         let response = await axios.get('https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en')
-        //return response.data.affix_details
-        return response.data
+        return response?.data?.affix_details
     }
 }
