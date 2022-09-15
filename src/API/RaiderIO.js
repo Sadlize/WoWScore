@@ -11,7 +11,12 @@ export default class RaiderIO {
         let result = {}
 
         for (let element in region) {
-            let response = await axios.get('https://raider.io/api/v1/mythic-plus/season-cutoffs?season=season-sl-4&region=' + region[element])
+            let response = await axios.get('https://raider.io/api/v1/mythic-plus/season-cutoffs', {
+                params: {
+                    season: 'season-sl-4',
+                    region: region[element]
+                }
+            })
             result[element] = response?.data?.cutoffs?.p999?.all?.quantileMinValue
         }
 
@@ -19,7 +24,29 @@ export default class RaiderIO {
     }
 
     static async getCurrentAffixes() {
-        let response = await axios.get('https://raider.io/api/v1/mythic-plus/affixes?region=eu&locale=en')
+        let response = await axios.get('https://raider.io/api/v1/mythic-plus/affixes', {
+            params: {
+                region: 'eu',
+                locale: 'en'
+            }
+        })
+        console.log(response?.data?.affix_details)
         return response?.data?.affix_details
     }
+
+    static async getCurrentWeekPeriod() {
+        let response = await axios.get('https://raider.io/api/v1/periods')
+        response = response?.data?.periods[1]?.current
+
+        let options = { month: 'long', day: 'numeric' };
+        let periodStart = new Date(response?.start).toLocaleString(
+            'en-US', options
+        )
+        let periodEnd = new Date(response?.end).toLocaleString(
+            'en-US', options
+        )
+
+        return periodStart + ' – ' + periodEnd
+    }
+
 }
