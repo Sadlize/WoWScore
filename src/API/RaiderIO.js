@@ -30,7 +30,6 @@ export default class RaiderIO {
                 locale: 'en'
             }
         })
-        console.log(response?.data?.affix_details)
         return response?.data?.affix_details
     }
 

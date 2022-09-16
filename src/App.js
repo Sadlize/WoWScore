@@ -1,6 +1,7 @@
 import './App.css';
 import CutoffScores from "./Components/UI/CutoffScores/CutoffScores";
-import Affixes from "./Components/UI/Affixes/Affixes";
+import CurrentAffixes from "./Components/UI/Affixes/CurrentAffixes";
+import AffixesSchedule from "./Components/UI/Affixes/AffixesSchedule";
 
 function App() {
 
@@ -22,8 +23,13 @@ function App() {
     return (
         <div className="App">
             <h1>WoWScore</h1>
-            <Affixes/>
-            <CutoffScores region={region}/>
+
+            <div className='content-box'>
+                <AffixesSchedule/>
+                <CurrentAffixes/>
+                <CutoffScores region={region}/>
+            </div>
+
         </div>
     );
 }

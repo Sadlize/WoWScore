@@ -16,16 +16,18 @@ const CutoffScores = ({region}) => {
 
     return (
         <div>
-            {isCutoffLoading
-                ? <h1>Loading cutoffs...</h1>
-                : <>
-                    <h2>Cutoffs:</h2>
-                    <p>US: {cutoffScore.US} </p>
-                    <p>EU: {cutoffScore.EU}</p>
-                    <p>TW: {cutoffScore.TW}</p>
-                    <p>KR: {cutoffScore.KR}</p>
-                </>
-            }
+            <h2>Cutoffs:</h2>
+            <div className='content-block'>
+                {isCutoffLoading
+                    ? <h1>Loading cutoffs...</h1>
+                    : <>
+                        <p>US: {cutoffScore.US} </p>
+                        <p>EU: {cutoffScore.EU}</p>
+                        <p>TW: {cutoffScore.TW}</p>
+                        <p>KR: {cutoffScore.KR}</p>
+                    </>
+                }
+            </div>
         </div>
     );
 };

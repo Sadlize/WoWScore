@@ -5,12 +5,12 @@ export default class BattleNet {
     static async getMythicKeystoneAffixesIndex() {
 
         let response = await axios.get(
-            'https://us.api.blizzard.com/data/wow/keystone-affix/index',
+            'https://eu.api.blizzard.com/data/wow/keystone-affix/index',
             {
                 params: {
-                    namespace: 'static-us',
+                    namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USqQgcSGY2PkVYksE9vbxLswsbz2Mich7u'
+                    access_token: 'UShDAiN7zWhMiZIoF5F6EePuT1X1rucVEU'
                 }
             })
 
@@ -24,7 +24,7 @@ export default class BattleNet {
                 params: {
                     namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USqQgcSGY2PkVYksE9vbxLswsbz2Mich7u'
+                    access_token: 'UShDAiN7zWhMiZIoF5F6EePuT1X1rucVEU'
                 }
             })
         return response?.data
@@ -37,7 +37,7 @@ export default class BattleNet {
                 params: {
                     namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USqQgcSGY2PkVYksE9vbxLswsbz2Mich7u'
+                    access_token: 'UShDAiN7zWhMiZIoF5F6EePuT1X1rucVEU'
                 }
             })
         return response?.data
