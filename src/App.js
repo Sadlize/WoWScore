@@ -2,6 +2,7 @@ import './App.css';
 import CutoffScores from "./Components/UI/CutoffScores/CutoffScores";
 import CurrentAffixes from "./Components/UI/Affixes/CurrentAffixes";
 import AffixesSchedule from "./Components/UI/Affixes/AffixesSchedule";
+import ScoreCalculator from "./Components/UI/Calculator/ScoreCalculator";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <AffixesSchedule/>
                 <CurrentAffixes/>
                 <CutoffScores region={region}/>
+                <ScoreCalculator/>
             </div>
 
         </div>
