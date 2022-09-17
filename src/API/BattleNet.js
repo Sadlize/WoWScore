@@ -53,8 +53,6 @@ export default class BattleNet {
             result[i.name].name = i.name
             let mediaResponse = await BattleNet.getMythicKeystoneAffixMediaByIndex(i.id)
             result[i.name].icon = mediaResponse?.assets[0]?.value
-            let descriptionResponse = await BattleNet.getMythicKeystoneAffixDescByIndex(i.id)
-            result[i.name].description = descriptionResponse?.description
         }
 
         return result

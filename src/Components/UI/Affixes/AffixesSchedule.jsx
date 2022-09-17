@@ -55,19 +55,29 @@ const AffixesSchedule = () => {
                                 <div key={key}>
                                     {/*{key}*/}
                                     {affixesSchedule[key].map((affix) => (
-                                        <img
+                                        <a
                                             key={affixesList[affix]?.name + '_' + key}
-                                            src={affixesList[affix]?.icon}
-                                            alt={affixesList[affix]?.name}
-                                            title={affixesList[affix]?.description}
-                                        />
+                                            href={'https://www.wowhead.com/affix=' + affixesList[affix]?.id}
+                                            target="_blank"
+                                            rel='noreferrer'
+                                        >
+                                            <img
+                                                src={affixesList[affix]?.icon}
+                                                alt={affixesList[affix]?.name}
+                                            />
+                                        </a>
                                     ))}
-                                    <img
-                                        key={affixesList[affixesSchedule?.season]?.icon + '_' + key}
-                                        src={affixesList[affixesSchedule?.season]?.icon}
-                                        alt={affixesList[affixesSchedule?.season]?.name}
-                                        title={affixesList[affixesSchedule?.season]?.description}
-                                    />
+                                    <a
+                                        key={affixesList[affixesSchedule?.season]?.name + '_' + key}
+                                        href={'https://www.wowhead.com/affix=' + affixesList[affixesSchedule?.season]?.id}
+                                        target="_blank"
+                                        rel='noreferrer'
+                                    >
+                                        <img
+                                            src={affixesList[affixesSchedule?.season]?.icon}
+                                            alt={affixesList[affixesSchedule?.season]?.name}
+                                        />
+                                    </a>
                                 </div>
                             ))
                         }

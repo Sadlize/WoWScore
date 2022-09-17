@@ -37,12 +37,17 @@ const CurrentAffixes = () => {
                     : <>
                         <p>{currentWeekPeriod}</p>
                         {currentAffixes.map((currentAffixes) => (
-                            <img
+                            <a
                                 key={currentAffixes?.id}
-                                src={"https://wow.zamimg.com/images/wow/icons/large/" + currentAffixes?.icon + ".jpg"}
-                                alt={currentAffixes?.name}
-                                title={currentAffixes?.description}
-                            />
+                                href={'https://www.wowhead.com/affix=' + currentAffixes?.id}
+                                target="_blank"
+                                rel='noreferrer'
+                            >
+                                <img
+                                    src={"https://wow.zamimg.com/images/wow/icons/large/" + currentAffixes?.icon + ".jpg"}
+                                    alt={currentAffixes?.name}
+                                />
+                            </a>
                         ))}
                         <p>{currentAffixes[0]?.name + ', ' + currentAffixes[1]?.name + ', ' + currentAffixes[2]?.name + ', ' + currentAffixes[3]?.name}</p>
                     </>
