@@ -37,7 +37,8 @@ const AffixesSchedule = () => {
     const weeks = Object.keys(affixesSchedule)
         .filter(item => item !== 'season')
 
-    weeks.map(item => affixesSchedule[item].push(affixesSchedule.season))
+    weeks.forEach(item => affixesSchedule[item].push(affixesSchedule.season))
+
 
     useEffect(() => {
         fetchAffixesList()
