@@ -34,9 +34,10 @@ const AffixesSchedule = () => {
         12: ['Fortified', 'Spiteful', 'Necrotic'],
     }
 
-    const weeks = Object.keys(affixesSchedule).filter(item => item !== 'season')
-    weeks.map(key => affixesSchedule[key])
+    const weeks = Object.keys(affixesSchedule)
+        .filter(item => item !== 'season')
 
+    weeks.map(item => affixesSchedule[item].push(affixesSchedule.season))
 
     useEffect(() => {
         fetchAffixesList()
@@ -67,17 +68,6 @@ const AffixesSchedule = () => {
                                             />
                                         </a>
                                     ))}
-                                    <a
-                                        key={affixesList[affixesSchedule?.season]?.name + '_' + key}
-                                        href={'https://www.wowhead.com/affix=' + affixesList[affixesSchedule?.season]?.id}
-                                        target="_blank"
-                                        rel='noreferrer'
-                                    >
-                                        <img
-                                            src={affixesList[affixesSchedule?.season]?.icon}
-                                            alt={affixesList[affixesSchedule?.season]?.name}
-                                        />
-                                    </a>
                                 </div>
                             ))
                         }

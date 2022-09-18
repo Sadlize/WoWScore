@@ -10,7 +10,7 @@ export default class BattleNet {
                 params: {
                     namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USUpQBSn78x3KPRnJUpG6uWhqu1FpRy5g3'
+                    access_token: 'USF31DBZBIxngaph1GvzaMPeO61tH4Yenj'
                 }
             })
 
@@ -24,7 +24,7 @@ export default class BattleNet {
                 params: {
                     namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USUpQBSn78x3KPRnJUpG6uWhqu1FpRy5g3'
+                    access_token: 'USF31DBZBIxngaph1GvzaMPeO61tH4Yenj'
                 }
             })
         return response?.data
@@ -37,7 +37,7 @@ export default class BattleNet {
                 params: {
                     namespace: 'static-eu',
                     locale: 'en_US',
-                    access_token: 'USUpQBSn78x3KPRnJUpG6uWhqu1FpRy5g3'
+                    access_token: 'USF31DBZBIxngaph1GvzaMPeO61tH4Yenj'
                 }
             })
         return response?.data

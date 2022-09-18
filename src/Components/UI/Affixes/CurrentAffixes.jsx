@@ -49,7 +49,7 @@ const CurrentAffixes = () => {
                                 />
                             </a>
                         ))}
-                        <p>{currentAffixes[0]?.name + ', ' + currentAffixes[1]?.name + ', ' + currentAffixes[2]?.name + ', ' + currentAffixes[3]?.name}</p>
+                        <p>{currentAffixes.map(item => item?.name).join(', ')}</p>
                     </>
                 }
             </div>
