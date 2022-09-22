@@ -1,3 +1,12 @@
+#STRT {background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);}
+#GMBT {background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);}
+#YARD {background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);}
+#WORK {background-image: url(images/dungeons/operation-mechagon-workshop.jpg);}
+#ID {background-image: url(images/dungeons/iron-docks.jpg);}
+#GD {background-image: url(images/dungeons/grimrail-depot.jpg);}
+#LOWR {background-image: url(images/dungeons/return-to-karazhan-lower.jpg);}
+#UPPR {background-image: url(images/dungeons/return-to-karazhan-upper.jpg);}
+
 body {
     background: #181610;
     font-family: lato, sans-serif;
@@ -7,6 +16,12 @@ body {
 h2 {
     margin: 0;
     text-align: left;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.calcScore {
+    margin: 0;
+    font-size: 2em;
 }
 
 .App {
@@ -57,7 +72,7 @@ h2 {
 }
 
 .content-block div img {
-    width: 10%;
+    /*width: 10%;*/
 }
 
 @keyframes App-logo-spin {
@@ -67,4 +82,34 @@ h2 {
     to {
         transform: rotate(360deg);
     }
+}
+
+.dungeon-grid {
+    display: inline-grid;
+    gap: 5px;
+}
+
+.dungeon-grid span{
+    font-weight: bold;
+}
+
+.inp {
+    background-image: url(https://mplus.subcreation.net/images/affixes/fortified.jpg);
+    width: 56px;
+    height: 56px;
+    color: #f6714a;
+    text-align: center;
+    font-size: 150%;
+    transition-duration: 2s;
+    font-weight: 900;
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+    /*-webkit-text-stroke: 1px #000;*/
+}
+
+.grayscale100 {
+    filter: grayscale(100%);
+}
+
+.grayscale0 {
+    filter: grayscale(0%);
 }

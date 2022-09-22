@@ -45,9 +45,9 @@ export default class BattleNet {
 
     static async test() {
         let result = {}
-        const test = await BattleNet.getMythicKeystoneAffixesIndex()
+        const response = await BattleNet.getMythicKeystoneAffixesIndex()
 
-        for (const i of test?.affixes) {
+        for (const i of response?.affixes) {
             result[i.name] = {}
             result[i.name].id = i.id
             result[i.name].name = i.name
