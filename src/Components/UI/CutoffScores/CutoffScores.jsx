@@ -16,7 +16,7 @@ const CutoffScores = ({region}) => {
 
     return (
         <div>
-            <h2 className='content-heading'><span>Cutoff<br/>scores:</span></h2>
+            <h2 className='content-heading'><span>Cutoff<br/>scores</span></h2>
             <div className='content-block'>
                 {isCutoffLoading
                     ? <h1>Loading cutoffs...</h1>

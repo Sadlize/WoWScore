@@ -30,7 +30,7 @@ const CurrentAffixes = () => {
 
     return (
         <div>
-            <h2 className='content-heading'><span>Current<br/>affixes:</span></h2>
+            {/*<h2 className='content-heading'><span>Current<br/>affixes:</span></h2>*/}
             <div className='content-block'>
                 {isCurrentAffixesLoading
                     ? <span>Loading current affixes...</span>

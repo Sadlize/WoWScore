@@ -85,7 +85,7 @@ const ScoreCalculator = () => {
 						/>
 					</div>
 				))}
-                <hr/>
+                <h2 className='content-heading'>or</h2>
                 {/*<h2 className='content-heading'>Import your character key levels</h2>*/}
 				<input/>
 				<select>
