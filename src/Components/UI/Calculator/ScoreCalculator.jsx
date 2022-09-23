@@ -38,10 +38,9 @@ const ScoreCalculator = () => {
 
 	return (
 		<div>
-			<h2>ScoreCalculator</h2>
+			<h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
 			<div className='content-block'>
 				<p className='calcScore'>{sumDungeonScoreValues}</p>
-				<hr/>
 				{/*<div className="dungeon-grid">*/}
 				{/*    <span>Test</span>*/}
 				{/*    <img src="https://wow.zamimg.com/images/wow/icons/large/ability_toughness.jpg"/>*/}
@@ -86,10 +85,11 @@ const ScoreCalculator = () => {
 						/>
 					</div>
 				))}
-				<hr/>
+                <hr/>
+                {/*<h2 className='content-heading'>Import your character key levels</h2>*/}
 				<input/>
 				<select>
-					<option>1</option>
+					<option>eu</option>
 				</select>
 				<button>123</button>
 			</div>

@@ -13,12 +13,42 @@ body {
     color: #fff;
 }
 
-h2 {
+.content-heading {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    letter-spacing: .05em;
     margin: 0;
-    text-align: left;
-    font-weight: 500;
-    line-height: 1.2;
+    font: 1.5em/1 Georgia;
+    padding: .2em 0;
+    text-shadow: 0 1px rgba(255,255,255,.6);
 }
+.content-heading:before,
+.content-heading:after {
+    content: "";
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 2px;
+    vertical-align: middle;
+    background-clip: content-box;
+    border-bottom: 2px solid rgba(255,255,255,.5);
+}
+.content-heading:before {
+    left: -.5em;
+    margin: 0 0 0 -50%;
+}
+.content-heading:after {
+    left: .5em;
+    margin: 0 -50% 0 0;
+}
+.content-heading>span {
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+}
+
 .calcScore {
     margin: 0;
     font-size: 2em;
@@ -63,7 +93,7 @@ h2 {
 .content-block {
     background: #2e2e2e;
     border-radius: 4px;
-    box-sizing: border-box;
+    /*box-sizing: border-box;*/
     overflow: hidden;
     padding: 10px;
     vertical-align: top;
@@ -97,13 +127,14 @@ h2 {
     background-image: url(https://mplus.subcreation.net/images/affixes/fortified.jpg);
     width: 56px;
     height: 56px;
+    padding: 0;
+    border-width: 0;
     color: #f6714a;
     text-align: center;
     font-size: 150%;
     transition-duration: 2s;
     font-weight: 900;
     text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-    /*-webkit-text-stroke: 1px #000;*/
 }
 
 .grayscale100 {
@@ -111,5 +142,5 @@ h2 {
 }
 
 .grayscale0 {
-    filter: grayscale(0%);
+    filter: none;
 }

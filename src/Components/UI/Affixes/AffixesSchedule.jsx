@@ -46,13 +46,13 @@ const AffixesSchedule = () => {
 
     return (
         <div>
-            <h2>Affixes schedule:</h2>
+            <h2 className='content-heading'><span>Affixes<br/>schedule:</span></h2>
             <div className='content-block'>
                 {isAffixesListLoading
-                    ? <h1>Loading affixes schedule...</h1>
+                    ? <span>Loading affixes schedule...</span>
                     : <>
                         {isAffixesListError
-                            ? <h1>Request error</h1>
+                            ? <span>Request error</span>
                             : weeks.map((key) => (
                                 <div key={key}>
                                     {/*{key}*/}

@@ -30,16 +30,16 @@ const CurrentAffixes = () => {
 
     return (
         <div>
-            <h2>Current affixes:</h2>
+            <h2 className='content-heading'><span>Current<br/>affixes:</span></h2>
             <div className='content-block'>
                 {isCurrentAffixesLoading
-                    ? <h1>Loading current affixes...</h1>
+                    ? <span>Loading current affixes...</span>
                     : <>
                         <p>{currentWeekPeriod}</p>
                         {currentAffixes.map((currentAffixes) => (
                             <a
                                 key={currentAffixes?.id}
-                                href={'https://www.wowhead.com/affix=' + currentAffixes?.id}
+                                href={'https://wowhead.com/affix=' + currentAffixes?.id}
                                 target="_blank"
                                 rel='noreferrer'
                             >
