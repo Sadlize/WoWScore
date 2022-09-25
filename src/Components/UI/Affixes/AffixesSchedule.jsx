@@ -46,7 +46,6 @@ const AffixesSchedule = () => {
 
     return (
         <div>
-            {/*<h2 className='content-heading'><span>Affixes<br/>schedule:</span></h2>*/}
             <div className='content-block'>
                 {isAffixesListLoading
                     ? <span>Loading affixes schedule...</span>
