@@ -50,7 +50,7 @@ body {
 .content-heading > span {
     display: inline-block;
     vertical-align: middle;
-    white-space: normal;
+    white-space: pre;
 }
 
 .calcScore {
@@ -89,10 +89,9 @@ body {
 }
 
 .content-block {
+    position:relative;
     background: #2e2e2e;
     border-radius: 4px;
-    /*box-sizing: border-box;*/
-    overflow: hidden;
     padding: 10px;
     vertical-align: top;
     min-width: 300px;
@@ -113,7 +112,6 @@ body {
 }
 
 .inp {
-    background-image: url(https://mplus.subcreation.net/images/affixes/fortified.jpg);
     width: 56px;
     height: 56px;
     padding: 0;
