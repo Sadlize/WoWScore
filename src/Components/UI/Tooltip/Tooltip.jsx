@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import "./Tooltip.css";
+import clsx from 'clsx'
 
 const Tooltip = (props) => {
     let timeout;
@@ -15,18 +16,16 @@ const Tooltip = (props) => {
         clearInterval(timeout);
         setActive(false);
     };
-    console.log(    [props.textDecoration || "", props.position || ""].join(' ')                )
 
-    console.log(    (props.textDecoration + ' ' || "") + (props.position + ' ' || "")           )
     return (
         <div
-            className={[props.textDecoration || "", props.position || ""].join(' ')}
+            className={clsx(props.textDecoration, props.position)}
             onMouseEnter={showTip}
             onMouseLeave={hideTip}
         >
             {props.target}
             {active && (
-                <div className={'Tooltip-Tip ' + (props.direction || "top")}>
+                <div className={clsx('Tooltip-Tip', props.direction || "top")}>
                     {props.children}
                 </div>
             )}
