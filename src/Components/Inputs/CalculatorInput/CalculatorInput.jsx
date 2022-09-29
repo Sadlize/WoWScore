@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import clsx from "clsx";
 import {calcPointsForKeyLevel} from "../../../utils/Calculator/Calculator";
+import CalculatorModal from "../../Modals/CalculatorModal/CalculatorModal";
+import {IconContext} from "react-icons";
+import {AiFillStar} from "react-icons/ai";
 
 
 const CalculatorInput = (props) => {
@@ -19,9 +22,84 @@ const CalculatorInput = (props) => {
             return 1 //different
         }
     }
-
+    const [modal, setModal] = useState(false)
+    const [radioOption, setRadioOption] = useState(0)
+    console.log(radioOption)
     return (
-        <div id={key}>
+        <>
+            <CalculatorModal visible={modal} setVisible={setModal}>
+                <div className="dungeon-grid">
+                    <h2 className={'content-heading'}>{key + ' ' + week}</h2>
+                    <input
+                        className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'inp')}
+                        type='text' autoComplete="off" maxLength='2'
+                        onChange={e => {
+                            const value = e.target.value
+                            if (value.length <= e.target.maxLength) {
+                                if (isDifferent(value)) {
+                                    setInput(value)
+                                    setScorePerDungeon(prevState => (
+                                        {
+                                            ...prevState,
+                                            [key]: {...prevState[key], [week]: calcPointsForKeyLevel(+value)}
+                                        }
+                                    ))
+                                }
+                            }
+                        }}
+                    />
+                    <div className="test">
+                        <IconContext.Provider value={{color: "#ffbb4d"}}>
+                            <input
+                                checked={radioOption === 0}
+                                type="radio" name={key + '_stars_' + week[0]}
+                                id={key + '_star_' + week[0]}
+                                onChange={(() => {
+                                    setRadioOption(0)
+                                })}
+                            />
+                            <label
+                                htmlFor={key + '_star_' + week[0]}
+                            >
+                                <AiFillStar/>
+                            </label>
+                        </IconContext.Provider>
+                        <IconContext.Provider value={{color: "#ffbb4d"}}>
+                            <input
+                                checked={radioOption === 1}
+                                type="radio" name={key + '_stars_' + week[0]}
+                                id={key + '_2star_' + week[0]}
+                                onChange={(() => {
+                                    setRadioOption(1)
+                                })}
+                            />
+                            <label
+                                htmlFor={key + '_2star_' + week[0]}
+                                className={clsx({'grayscale100': radioOption < 1})}
+                            >
+                                <AiFillStar/>
+                            </label>
+                        </IconContext.Provider>
+                        <IconContext.Provider value={{color: "#ffbb4d"}}>
+                            <input
+                                checked={radioOption === 2}
+                                type="radio" name={key + '_stars_' + week[0]}
+                                id={key + '_3star_' + week[0]}
+                                onChange={(() => {
+                                    setRadioOption(2)
+                                })}
+                            />
+                            <label
+                                htmlFor={key + '_3star_' + week[0]}
+                                className={clsx({'grayscale100': radioOption < 2})}
+                            >
+                                <AiFillStar/>
+                            </label>
+                        </IconContext.Provider>
+                    </div>
+                    <input type="range" min="0" max="100" step="1"/>
+                </div>
+            </CalculatorModal>
             <input
                 value={input}
                 placeholder={placeholder}
@@ -43,11 +121,12 @@ const CalculatorInput = (props) => {
                         }
                     }
                 }}
-                // onContextMenu={(e) => {
-                //     e.preventDefault();
-                // }}
+                onContextMenu={(e) => {
+                    e.preventDefault()
+                    setModal(true)
+                }}
             />
-        </div>
+        </>
     );
 };
 

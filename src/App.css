@@ -1,11 +1,34 @@
-#STRT input {background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);}
-#GMBT input {background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);}
-#YARD input {background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);}
-#WORK input {background-image: url(images/dungeons/operation-mechagon-workshop.jpg);}
-#ID input {background-image: url(images/dungeons/iron-docks.jpg);}
-#GD input {background-image: url(images/dungeons/grimrail-depot.jpg);}
-#LOWR input {background-image: url(images/dungeons/return-to-karazhan-lower.jpg);}
-#UPPR input {background-image: url(images/dungeons/return-to-karazhan-upper.jpg);}
+#STRT input[type=text] {
+    background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);
+}
+
+#GMBT input[type=text] {
+    background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);
+}
+
+#YARD input[type=text] {
+    background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);
+}
+
+#WORK input[type=text] {
+    background-image: url(images/dungeons/operation-mechagon-workshop.jpg);
+}
+
+#ID input[type=text] {
+    background-image: url(images/dungeons/iron-docks.jpg);
+}
+
+#GD input[type=text] {
+    background-image: url(images/dungeons/grimrail-depot.jpg);
+}
+
+#LOWR input[type=text] {
+    background-image: url(images/dungeons/return-to-karazhan-lower.jpg);
+}
+
+#UPPR input[type=text] {
+    background-image: url(images/dungeons/return-to-karazhan-upper.jpg);
+}
 
 body {
     background: #181610;
@@ -58,6 +81,25 @@ body {
     font-size: 2em;
 }
 
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + label > [first-child] {
+    /*background-image: url("images/218-star-full.png")*/
+    color: red;
+}
+
 .App {
     text-align: center;
 }
@@ -89,7 +131,7 @@ body {
 }
 
 .content-block {
-    position:relative;
+    position: relative;
     background: #2e2e2e;
     border-radius: 4px;
     padding: 10px;
@@ -103,8 +145,10 @@ body {
 }
 
 .dungeon-grid {
+    position: relative;
     display: inline-grid;
     gap: 5px;
+    justify-items: center;
 }
 
 .dungeon-grid span {
@@ -130,18 +174,6 @@ body {
 
 .grayscale0 {
     filter: none;
-}
-
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
 }
 
 ul.tabNav {

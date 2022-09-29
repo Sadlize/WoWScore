@@ -5,6 +5,7 @@ import Tabs from "./Components/UI/TabComponent/Tabs";
 // import logo from './images/logo.png'
 import CurrentAffixes from "./Components/UI/Affixes/CurrentAffixes";
 import AffixesSchedule from "./Components/UI/Affixes/AffixesSchedule";
+import React from "react";
 
 function App() {
 
@@ -22,7 +23,6 @@ function App() {
     //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     //     console.log(diffDays + " days left");
     // }
-
     return (
         <div className="App">
             {/*<img src={logo}/>*/}
@@ -35,6 +35,7 @@ function App() {
                 </Tabs>
                 <CutoffScores region={region}/>
                 <ScoreCalculator/>
+
             </div>
 
         </div>
