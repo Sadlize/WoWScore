@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import Tooltip from "../Tooltip/Tooltip";
 import ScoreCalculatorInput from "./ScoreCalculatorInput";
 import './ScoreCalculator.css'
+import {FaQuestion} from "react-icons/fa";
+import TooltipGroup from "../Tooltip/TooltipGroup";
+import {GiClick} from "react-icons/gi";
 
 const ScoreCalculator = () => {
 
@@ -30,19 +33,24 @@ const ScoreCalculator = () => {
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
             <div className='content-block'>
+                <TooltipGroup position='top-right'>
+                    <Tooltip target={<FaQuestion/>}>
+                        The calculated result displays the number of points received for completing the dungeon
+                        with the minimum timer. In reality, your result will differ, but not lower than this value.
+                    </Tooltip>
+                    <Tooltip target={<GiClick/>}>
+                        Inputs support MRB click.
+                    </Tooltip>
+                </TooltipGroup>
 
-                <Tooltip target='?' position='top-right'>
-                    The calculated result displays the number of points received for completing the dungeon
-                    with the minimum timer. In reality, your result will differ, but not lower than this value.
-                </Tooltip>
                 <p className='CalcScore'>{sumDungeonScoreValues}</p>
                 {dungeonKey.map((key) => (
                     <div id={key} key={key} className="dungeon-grid">
                         <span>{key}</span>
-                        {dungeonWeeks.map(item => (
+                        {dungeonWeeks.map(week => (
                             <ScoreCalculatorInput
-                                key={key + '' + item}
-                                week={item}
+                                key={key + '' + week}
+                                week={week}
                                 index={key}
                                 placeholder={'0'}
                                 scorePerDungeon={scorePerDungeon}

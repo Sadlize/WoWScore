@@ -5,9 +5,17 @@
     --tooltip-arrow-size: 6px;
 }
 
+.target {
+    display: flex;
+}
+
 .top-right {
     position: absolute;
     right: 10px;
+}
+
+.top-left {
+    position: absolute;
 }
 
 .bottom-left {

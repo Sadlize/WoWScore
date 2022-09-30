@@ -48,14 +48,18 @@ const ScoreCalculatorInput = (props) => {
                         }}
                     />
                     <div>
-                        <IconInputWrapper color={"#ffbb4d"} count={3}>
-                            <IconInput
-                                name={key + week}
-                                icon={<AiFillStar/>}
-                                id={key + week[0] + 'star'}
-                            />
-                        </IconInputWrapper>
-                    <input type="range" min="0" max="100" step="1"/>
+                        <div className='StarTimestamp'>
+                            <IconInputWrapper color={"#ffbb4d"} count={3}>
+                                <IconInput
+                                    name={key + week}
+                                    icon={<AiFillStar/>}
+                                    id={key + week[0] + 'star'}
+                                />
+                            </IconInputWrapper>
+                        </div>
+                        <input type="range" min="0" max="100" step="50"
+                        onChange={() => {}}
+                        />
                     </div>
                 </div>
             </ScoreCalculatorModal>
