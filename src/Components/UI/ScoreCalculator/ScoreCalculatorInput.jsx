@@ -24,7 +24,6 @@ const ScoreCalculatorInput = (props) => {
         }
     }
     const [modal, setModal] = useState(false)
-    const [radioOption, setRadioOption] = useState(0)
     return (
         <>
             <ScoreCalculatorModal visible={modal} setVisible={setModal}>
@@ -53,8 +52,7 @@ const ScoreCalculatorInput = (props) => {
                             <IconInput
                                 name={key + week}
                                 icon={<AiFillStar/>}
-                                radioOption={radioOption} setRadioOption={setRadioOption}
-                                id={key + `_${week[0]}_` + 'star'}
+                                id={key + week[0] + 'star'}
                             />
                         </IconInputWrapper>
                     <input type="range" min="0" max="100" step="1"/>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {IconContext} from "react-icons";
 
 const IconInputWrapper = ({children, ...props}) => {
+    const [radioOption, setRadioOption] = useState(0)
     let count = props?.count || false
-    let color = props?.color
+    let color = props?.color || 'gold'
 
     let newChildren = []
     if (count) {
@@ -11,7 +12,9 @@ const IconInputWrapper = ({children, ...props}) => {
             newChildren.push(React.cloneElement(children, {
                 key: i,
                 option: i,
-                id: children.props.id + i
+                id: children.props.id + i,
+                radioOption: radioOption,
+                setRadioOption: setRadioOption
             }))
         }
     }
