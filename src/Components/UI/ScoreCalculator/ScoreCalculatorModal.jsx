@@ -1,8 +1,7 @@
 import React from 'react';
-import './CalculatorModal.css'
 import clsx from "clsx";
 
-const CalculatorModal = ({children, visible, setVisible}) => {
+const ScoreCalculatorModal = ({children, visible, setVisible}) => {
 
     return (
         <div className={clsx('CalcModal', {'active': visible === true})} onClick={() => setVisible(false)}>
@@ -13,4 +12,4 @@ const CalculatorModal = ({children, visible, setVisible}) => {
     );
 };
 
-export default CalculatorModal;
+export default ScoreCalculatorModal;

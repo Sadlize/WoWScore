@@ -30,10 +30,40 @@
     background-image: url(images/dungeons/return-to-karazhan-upper.jpg);
 }
 
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
 body {
     background: #181610;
     font-family: lato, sans-serif;
     color: #fff;
+}
+
+.content-box {
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .content-heading {
@@ -76,60 +106,6 @@ body {
     white-space: pre;
 }
 
-.calcScore {
-    margin: 0;
-    font-size: 2em;
-}
-
-/* HIDE RADIO */
-[type=radio] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* IMAGE STYLES */
-[type=radio] + img {
-    cursor: pointer;
-}
-
-/* CHECKED STYLES */
-[type=radio]:checked + label > [first-child] {
-    /*background-image: url("images/218-star-full.png")*/
-    color: red;
-}
-
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-.content-box {
-    gap: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .content-block {
     position: relative;
     background: #2e2e2e;
@@ -144,56 +120,10 @@ body {
     width: 35px;
 }
 
-.dungeon-grid {
-    position: relative;
-    display: inline-grid;
-    gap: 5px;
-    justify-items: center;
-}
-
-.dungeon-grid span {
-    font-weight: bold;
-}
-
-.inp {
-    width: 56px;
-    height: 56px;
-    padding: 0;
-    border-width: 0;
-    color: #f6714a;
-    text-align: center;
-    font-size: 150%;
-    transition-duration: 2s;
-    font-weight: 900;
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-}
-
 .grayscale100 {
     filter: grayscale(100%);
 }
 
 .grayscale0 {
     filter: none;
-}
-
-ul.tabNav {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 0;
-}
-
-ul.tabNav li {
-    width: 50%;
-    list-style: none;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.7s;
-    color: gray;
-    margin-bottom: 4px;
-}
-
-ul.tabNav li.active {
-    color: #fff;
 }

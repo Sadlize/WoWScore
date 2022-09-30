@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Tooltip from "../Tooltip/Tooltip";
-import CalculatorInput from "../../Inputs/CalculatorInput/CalculatorInput";
+import ScoreCalculatorInput from "./ScoreCalculatorInput";
+import './ScoreCalculator.css'
 
 const ScoreCalculator = () => {
 
@@ -19,8 +20,7 @@ const ScoreCalculator = () => {
     const dungeonWeeks = Object.keys(scorePerDungeon[dungeonKey[0]])
 
     let sumDungeonScoreValues = 0
-    const dungeonArray = Object.keys(scorePerDungeon)
-    dungeonArray.forEach(item =>
+    dungeonKey.forEach(item =>
         sumDungeonScoreValues += Object.values(scorePerDungeon[item])
             .sort((a, b) => b - a)
             .reduce((a, b) => (a * 1.5) + (b * 0.5))
@@ -35,12 +35,12 @@ const ScoreCalculator = () => {
                     The calculated result displays the number of points received for completing the dungeon
                     with the minimum timer. In reality, your result will differ, but not lower than this value.
                 </Tooltip>
-                <p className='calcScore'>{sumDungeonScoreValues}</p>
+                <p className='CalcScore'>{sumDungeonScoreValues}</p>
                 {dungeonKey.map((key) => (
                     <div id={key} key={key} className="dungeon-grid">
                         <span>{key}</span>
                         {dungeonWeeks.map(item => (
-                            <CalculatorInput
+                            <ScoreCalculatorInput
                                 key={key + '' + item}
                                 week={item}
                                 index={key}

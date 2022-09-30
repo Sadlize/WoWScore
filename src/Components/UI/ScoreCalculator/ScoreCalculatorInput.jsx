@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import clsx from "clsx";
-import {calcPointsForKeyLevel} from "../../../utils/Calculator/Calculator";
-import CalculatorModal from "../../Modals/CalculatorModal/CalculatorModal";
+import {calcPointsForKeyLevel} from "../../../utils/ScoreCalculator/calcPointsForKeyLevel";
+import ScoreCalculatorModal from "./ScoreCalculatorModal";
 import {IconContext} from "react-icons";
 import {AiFillStar} from "react-icons/ai";
 
 
-const CalculatorInput = (props) => {
+const ScoreCalculatorInput = (props) => {
     const placeholder = props?.placeholder || ''
     const scorePerDungeon = props?.scorePerDungeon
     const setScorePerDungeon = props?.setScorePerDungeon
@@ -27,11 +27,11 @@ const CalculatorInput = (props) => {
     console.log(radioOption)
     return (
         <>
-            <CalculatorModal visible={modal} setVisible={setModal}>
+            <ScoreCalculatorModal visible={modal} setVisible={setModal}>
                 <div className="dungeon-grid">
                     <h2 className={'content-heading'}>{key + ' ' + week}</h2>
                     <input
-                        className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'inp')}
+                        className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
                         type='text' autoComplete="off" maxLength='2'
                         onChange={e => {
                             const value = e.target.value
@@ -99,14 +99,14 @@ const CalculatorInput = (props) => {
                     </div>
                     <input type="range" min="0" max="100" step="1"/>
                 </div>
-            </CalculatorModal>
+            </ScoreCalculatorModal>
             <input
                 value={input}
                 placeholder={placeholder}
                 onFocus={(e) => e.target.placeholder = ''}
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'
-                className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'inp')}
+                className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
                 onChange={e => {
                     const value = e.target.value
                     if (value.length <= e.target.maxLength) {
@@ -130,4 +130,4 @@ const CalculatorInput = (props) => {
     );
 };
 
-export default CalculatorInput;
+export default ScoreCalculatorInput;

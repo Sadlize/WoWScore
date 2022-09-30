@@ -1,0 +1,22 @@
+
+ul.tabNav {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 0;
+}
+
+ul.tabNav li {
+    width: 50%;
+    list-style: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.7s;
+    color: gray;
+    margin-bottom: 4px;
+}
+
+ul.tabNav li.active {
+    color: #fff;
+}

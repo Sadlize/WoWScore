@@ -1,7 +1,7 @@
 import './App.css';
 import CutoffScores from "./Components/UI/CutoffScores/CutoffScores";
-import ScoreCalculator from "./Components/UI/Calculator/ScoreCalculator";
-import Tabs from "./Components/UI/TabComponent/Tabs";
+import ScoreCalculator from "./Components/UI/ScoreCalculator/ScoreCalculator";
+import Tab from "./Components/Tab/Tab";
 // import logo from './images/logo.png'
 import CurrentAffixes from "./Components/UI/Affixes/CurrentAffixes";
 import AffixesSchedule from "./Components/UI/Affixes/AffixesSchedule";
@@ -29,10 +29,10 @@ function App() {
             <h1>WoWScore</h1>
 
             <div className='content-box'>
-                <Tabs title={'Affixes'}>
+                <Tab title={'Affixes'}>
                     <CurrentAffixes title={'Current'}/>
                     <AffixesSchedule title={'Schedule'}/>
-                </Tabs>
+                </Tab>
                 <CutoffScores region={region}/>
                 <ScoreCalculator/>
 

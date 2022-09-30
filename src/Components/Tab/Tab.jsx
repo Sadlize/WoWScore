@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import TabNavigation from "./TabNavigation";
 import TabContent from "./TabContent";
+import './Tab.css';
 
-const Tabs = (props) => {
+const Tab = (props) => {
     const [activeTab, setActiveTab] = useState('0');
     const childrenKeys = Object.keys(props.children)
 
@@ -31,4 +32,4 @@ const Tabs = (props) => {
     );
 };
 
-export default Tabs;
+export default Tab;
