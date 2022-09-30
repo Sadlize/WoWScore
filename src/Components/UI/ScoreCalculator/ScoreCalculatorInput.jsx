@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import clsx from "clsx";
 import {calcPointsForKeyLevel} from "../../../utils/ScoreCalculator/calcPointsForKeyLevel";
 import ScoreCalculatorModal from "./ScoreCalculatorModal";
-import {IconContext} from "react-icons";
 import {AiFillStar} from "react-icons/ai";
+import IconInput from "../../Input/IconInput";
+import IconInputWrapper from "../../Input/IconInputWrapper";
 
 
 const ScoreCalculatorInput = (props) => {
@@ -24,7 +25,6 @@ const ScoreCalculatorInput = (props) => {
     }
     const [modal, setModal] = useState(false)
     const [radioOption, setRadioOption] = useState(0)
-    console.log(radioOption)
     return (
         <>
             <ScoreCalculatorModal visible={modal} setVisible={setModal}>
@@ -48,56 +48,17 @@ const ScoreCalculatorInput = (props) => {
                             }
                         }}
                     />
-                    <div className="test">
-                        <IconContext.Provider value={{color: "#ffbb4d"}}>
-                            <input
-                                checked={radioOption === 0}
-                                type="radio" name={key + '_stars_' + week[0]}
-                                id={key + '_star_' + week[0]}
-                                onChange={(() => {
-                                    setRadioOption(0)
-                                })}
+                    <div>
+                        <IconInputWrapper color={"#ffbb4d"} count={3}>
+                            <IconInput
+                                name={key + week}
+                                icon={<AiFillStar/>}
+                                radioOption={radioOption} setRadioOption={setRadioOption}
+                                id={key + `_${week[0]}_` + 'star'}
                             />
-                            <label
-                                htmlFor={key + '_star_' + week[0]}
-                            >
-                                <AiFillStar/>
-                            </label>
-                        </IconContext.Provider>
-                        <IconContext.Provider value={{color: "#ffbb4d"}}>
-                            <input
-                                checked={radioOption === 1}
-                                type="radio" name={key + '_stars_' + week[0]}
-                                id={key + '_2star_' + week[0]}
-                                onChange={(() => {
-                                    setRadioOption(1)
-                                })}
-                            />
-                            <label
-                                htmlFor={key + '_2star_' + week[0]}
-                                className={clsx({'grayscale100': radioOption < 1})}
-                            >
-                                <AiFillStar/>
-                            </label>
-                        </IconContext.Provider>
-                        <IconContext.Provider value={{color: "#ffbb4d"}}>
-                            <input
-                                checked={radioOption === 2}
-                                type="radio" name={key + '_stars_' + week[0]}
-                                id={key + '_3star_' + week[0]}
-                                onChange={(() => {
-                                    setRadioOption(2)
-                                })}
-                            />
-                            <label
-                                htmlFor={key + '_3star_' + week[0]}
-                                className={clsx({'grayscale100': radioOption < 2})}
-                            >
-                                <AiFillStar/>
-                            </label>
-                        </IconContext.Provider>
-                    </div>
+                        </IconInputWrapper>
                     <input type="range" min="0" max="100" step="1"/>
+                    </div>
                 </div>
             </ScoreCalculatorModal>
             <input
