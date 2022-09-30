@@ -3,9 +3,10 @@ import clsx from "clsx";
 
 const TooltipGroup = ({children, ...props}) => {
     const position = props?.position
-console.log(position)
+    const color = props?.color
+
     return (
-        <div className={clsx('target', position)}>
+        <div className={clsx('target', position)} style={{color: color}}>
             {children}
         </div>
     );
