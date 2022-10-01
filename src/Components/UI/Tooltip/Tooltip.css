@@ -1,6 +1,6 @@
 :root {
     --tooltip-text-color: white;
-    --tooltip-background-color: black;
+    --tooltip-background-color: #454545;
     --tooltip-margin: 10px;
     --tooltip-arrow-size: 6px;
 }
@@ -41,7 +41,6 @@
     padding: 6px;
     color: var(--tooltip-text-color);
     background: var(--tooltip-background-color);
-    border: 1px solid;
     font-size: 14px;
     font-family: sans-serif;
     line-height: 1;
@@ -63,9 +62,7 @@
 }
 
 .Tooltip-Tip.top {
-    /*top: calc(var(--tooltip-margin) * -1);*/
-    bottom: 100%;
-    margin-bottom: var(--tooltip-margin)
+    bottom: calc(100% + var(--tooltip-margin));
 }
 
 .Tooltip-Tip.top::before {
