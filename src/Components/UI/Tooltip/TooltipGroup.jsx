@@ -6,7 +6,7 @@ const TooltipGroup = ({children, ...props}) => {
     const color = props?.color
 
     return (
-        <div className={clsx('target', position)} style={{color: color}}>
+        <div className={clsx('Tooltip-Group', position)} style={{color: color}}>
             {children}
         </div>
     );

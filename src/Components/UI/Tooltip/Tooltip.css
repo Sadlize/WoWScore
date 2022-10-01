@@ -1,12 +1,16 @@
 :root {
     --tooltip-text-color: white;
     --tooltip-background-color: black;
-    --tooltip-margin: 100px;
+    --tooltip-margin: 10px;
     --tooltip-arrow-size: 6px;
 }
 
-.target {
+.Tooltip-Group {
     display: flex;
+}
+
+.target {
+    position: relative;
 }
 
 .top-right {
@@ -59,7 +63,9 @@
 }
 
 .Tooltip-Tip.top {
-    top: calc(var(--tooltip-margin) * -1);
+    /*top: calc(var(--tooltip-margin) * -1);*/
+    bottom: 100%;
+    margin-bottom: var(--tooltip-margin)
 }
 
 .Tooltip-Tip.top::before {

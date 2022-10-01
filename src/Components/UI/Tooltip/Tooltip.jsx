@@ -6,7 +6,7 @@ const Tooltip = ({children, ...props}) => {
     let timeout;
     const [active, setActive] = useState(false);
     const textDecoration = props?.textDecoration
-    const position = props?.position
+    const position = props?.position || 'target'
     const direction = props?.direction
     const target = props?.target
     const color = props?.color
