@@ -7,14 +7,9 @@ import IconInput from "../../Input/IconInput";
 import IconInputWrapper from "../../Input/IconInputWrapper";
 
 
-const ScoreCalculatorInput = (props) => {
-    const placeholder = props?.placeholder || ''
-    const scorePerDungeon = props?.scorePerDungeon
-    const setScorePerDungeon = props?.setScorePerDungeon
-    const key = props?.index
-    const week = props?.week
-
+const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setScorePerDungeon}) => {
     const [input, setInput] = useState('')
+
     const isDifferent = (value) => {
         value = value.replace(/\D/g, '')
         if (input === value) {
@@ -23,6 +18,22 @@ const ScoreCalculatorInput = (props) => {
             return 1 //different
         }
     }
+
+	const inputNewValue = (event) => {
+		const value = event.target.value
+		if (value.length <= event.target.maxLength) {
+			if (isDifferent(value)) {
+				setInput(value)
+				setScorePerDungeon(prevState => (
+					{
+						...prevState,
+						[index]: {...prevState[index], [week]: calcPointsForKeyLevel(+value)}
+					}
+				))
+			}
+		}
+	}
+
     const [modal, setModal] = useState(false)
 
     const [radioOption, setRadioOption] = useState(0)
@@ -32,27 +43,16 @@ const ScoreCalculatorInput = (props) => {
         <>
             <ScoreCalculatorModal visible={modal} setVisible={setModal}>
                 <div className="dungeon-grid">
-                    <h2 className={'content-heading'}>{key + ' ' + week}</h2>
+                    <h2 className={'content-heading'}>{index + ' ' + week}</h2>
                     <input
 						value={input}
 						placeholder={placeholder}
 						onFocus={(e) => e.target.placeholder = ''}
 						onBlur={(e) => e.target.placeholder = placeholder}
 						type='text' autoComplete="off" maxLength='2'
-						className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
+						className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
 						onChange={e => {
-                            const value = e.target.value
-                            if (value.length <= e.target.maxLength) {
-                                if (isDifferent(value)) {
-                                    setInput(value)
-                                    setScorePerDungeon(prevState => (
-                                        {
-                                            ...prevState,
-                                            [key]: {...prevState[key], [week]: calcPointsForKeyLevel(+value)}
-                                        }
-                                    ))
-                                }
-                            }
+							inputNewValue(e)
                         }}
                     />
                     <div>
@@ -63,9 +63,9 @@ const ScoreCalculatorInput = (props) => {
                                 setDungeonTimestamp={setDungeonTimestamp}
                             >
                                 <IconInput
-                                    name={key + week}
+                                    name={index + week}
                                     icon={<AiFillStar/>}
-                                    id={key + week[0] + 'star'}
+                                    id={index + week[0] + 'star'}
                                 />
                             </IconInputWrapper>
                         </div>
@@ -87,20 +87,9 @@ const ScoreCalculatorInput = (props) => {
                 onFocus={(e) => e.target.placeholder = ''}
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'
-                className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
+                className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
                 onChange={e => {
-                    const value = e.target.value
-                    if (value.length <= e.target.maxLength) {
-                        if (isDifferent(value)) {
-                            setInput(value)
-                            setScorePerDungeon(prevState => (
-                                {
-                                    ...prevState,
-                                    [key]: {...prevState[key], [week]: calcPointsForKeyLevel(+value)}
-                                }
-                            ))
-                        }
-                    }
+					inputNewValue(e)
                 }}
                 onContextMenu={(e) => {
                     e.preventDefault()
