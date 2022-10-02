@@ -16,8 +16,7 @@ const Tab = (props) => {
                         key={key}
                         title={props.children[key].props.title}
                         id={key}
-                        activeTab={activeTab}
-                        setActiveTab={setActiveTab}
+                        activeTab={[activeTab, setActiveTab]}
                     />
                 ))}
             </ul>
