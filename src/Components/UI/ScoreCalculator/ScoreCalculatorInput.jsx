@@ -24,6 +24,10 @@ const ScoreCalculatorInput = (props) => {
         }
     }
     const [modal, setModal] = useState(false)
+
+    const [radioOption, setRadioOption] = useState(0)
+    const [dungeonTimestamp, setDungeonTimestamp] = useState(0)
+
     return (
         <>
             <ScoreCalculatorModal visible={modal} setVisible={setModal}>
@@ -49,7 +53,11 @@ const ScoreCalculatorInput = (props) => {
                     />
                     <div>
                         <div className='StarTimestamp'>
-                            <IconInputWrapper color={"#ffbb4d"} count={3}>
+                            <IconInputWrapper
+                                color={"#ffbb4d"} count={3}
+                                option={[radioOption, setRadioOption]}
+                                setDungeonTimestamp={setDungeonTimestamp}
+                            >
                                 <IconInput
                                     name={key + week}
                                     icon={<AiFillStar/>}
@@ -57,8 +65,14 @@ const ScoreCalculatorInput = (props) => {
                                 />
                             </IconInputWrapper>
                         </div>
-                        <input type="range" min="0" max="100" step="50"
-                        onChange={() => {}}
+                        <input
+                            type="range" min="0" max="100" step="50" value={dungeonTimestamp}
+                            onChange={(e) => {
+                                if (+e.target.value === 0) setRadioOption(0)
+                                if (+e.target.value === 50) setRadioOption(1)
+                                if (+e.target.value === 100) setRadioOption(2)
+                                setDungeonTimestamp(+e.target.value)
+                            }}
                         />
                     </div>
                 </div>

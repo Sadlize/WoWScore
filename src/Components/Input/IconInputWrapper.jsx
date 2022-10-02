@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {IconContext} from "react-icons";
 
 const IconInputWrapper = ({children, ...props}) => {
-    const [radioOption, setRadioOption] = useState(0)
-    let count = props?.count || false
-    let color = props?.color || 'gold'
+    const count = props?.count || false
+    const color = props?.color || 'gold'
+    const [radioOption, setRadioOption] = props.option
+    const setDungeonTimestamp = props?.setDungeonTimestamp
 
     let newChildren = []
     if (count) {
@@ -14,7 +15,8 @@ const IconInputWrapper = ({children, ...props}) => {
                 option: i,
                 id: children.props.id + i,
                 radioOption: radioOption,
-                setRadioOption: setRadioOption
+                setRadioOption: setRadioOption,
+                setDungeonTimestamp: setDungeonTimestamp,
             }))
         }
     }

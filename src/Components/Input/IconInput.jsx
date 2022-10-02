@@ -2,12 +2,13 @@ import React from 'react';
 import clsx from "clsx";
 
 const IconInput = (props) => {
-    let icon = props?.icon
-    let radioOption = props?.radioOption
-    let setRadioOption = props?.setRadioOption
-    let option = props?.option
-    let key = props?.id
-    let name = props?.name
+    const icon = props?.icon
+    const radioOption = props?.radioOption
+    const setRadioOption = props?.setRadioOption
+    const option = props?.option
+    const key = props?.id
+    const name = props?.name
+    const setDungeonTimestamp = props?.setDungeonTimestamp
 
     return (
         <>
@@ -16,6 +17,7 @@ const IconInput = (props) => {
                 name={name} id={key}
                 onChange={(() => {
                     setRadioOption(option)
+                    setDungeonTimestamp(option * 50)
                 })}
             />
             <label
