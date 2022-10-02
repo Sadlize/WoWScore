@@ -16,7 +16,7 @@ const ScoreCalculatorInput = (props) => {
 
     const [input, setInput] = useState('')
     const isDifferent = (value) => {
-        value = value.replace(/[^0-9]/g, '')
+        value = value.replace(/\D/g, '')
         if (input === value) {
             return 0 //same
         } else {
@@ -34,9 +34,13 @@ const ScoreCalculatorInput = (props) => {
                 <div className="dungeon-grid">
                     <h2 className={'content-heading'}>{key + ' ' + week}</h2>
                     <input
-                        className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
-                        type='text' autoComplete="off" maxLength='2'
-                        onChange={e => {
+						value={input}
+						placeholder={placeholder}
+						onFocus={(e) => e.target.placeholder = ''}
+						onBlur={(e) => e.target.placeholder = placeholder}
+						type='text' autoComplete="off" maxLength='2'
+						className={clsx({'grayscale100': scorePerDungeon[key][week] === 0}, 'CalcInput')}
+						onChange={e => {
                             const value = e.target.value
                             if (value.length <= e.target.maxLength) {
                                 if (isDifferent(value)) {
