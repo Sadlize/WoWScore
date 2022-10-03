@@ -41,9 +41,11 @@ body {
 }
 
 .content-box {
-    gap: 1rem;
+    align-items: baseline;
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
 
 .content-heading {
