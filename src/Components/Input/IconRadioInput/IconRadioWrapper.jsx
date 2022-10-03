@@ -1,22 +1,18 @@
 import React from 'react';
 import {IconContext} from "react-icons";
 
-const IconInputWrapper = ({children, ...props}) => {
-    const count = props?.count || false
-    const color = props?.color || 'gold'
-    const [radioOption, setRadioOption] = props.option
-    const setDungeonTimestamp = props?.setDungeonTimestamp
-
+const IconRadioWrapper = ({children, count, color = 'gold', ...states}) => {
     let newChildren = []
-    if (count) {
+
+    if (count > 0) {
         for (let i = 0; i < count; i++) {
             newChildren.push(React.cloneElement(children, {
                 key: i,
                 option: i,
                 id: children.props.id + i,
-                radioOption: radioOption,
-                setRadioOption: setRadioOption,
-                setDungeonTimestamp: setDungeonTimestamp,
+                radioOption: states.radioOption,
+                setRadioOption: states.setRadioOption,
+                setDungeonTimestamp: states.setDungeonTimestamp,
             }))
         }
     }
@@ -28,4 +24,4 @@ const IconInputWrapper = ({children, ...props}) => {
     );
 };
 
-export default IconInputWrapper;
+export default IconRadioWrapper;

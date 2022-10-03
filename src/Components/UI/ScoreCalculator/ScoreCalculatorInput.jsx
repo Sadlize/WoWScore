@@ -3,9 +3,8 @@ import clsx from "clsx";
 import {calcPointsForKeyLevel} from "../../../utils/ScoreCalculator/calcPointsForKeyLevel";
 import ScoreCalculatorModal from "./ScoreCalculatorModal";
 import {AiFillStar} from "react-icons/ai";
-import IconInput from "../../Input/IconInput";
-import IconInputWrapper from "../../Input/IconInputWrapper";
-
+import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
+import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
 
 const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setScorePerDungeon}) => {
     const [input, setInput] = useState('')
@@ -57,17 +56,17 @@ const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setSco
                     />
                     <div>
                         <div className='StarTimestamp'>
-                            <IconInputWrapper
-                                color={"#ffbb4d"} count={3}
-                                option={[radioOption, setRadioOption]}
+                            <IconRadioWrapper
+                                color={"#ffbb4d"} count={'asd'}
+                                state={{radioOption, setRadioOption}}
                                 setDungeonTimestamp={setDungeonTimestamp}
                             >
-                                <IconInput
+                                <IconRadioInput
                                     name={index + week}
                                     icon={<AiFillStar/>}
                                     id={index + week[0] + 'star'}
                                 />
-                            </IconInputWrapper>
+                            </IconRadioWrapper>
                         </div>
                         <input
                             type="range" min="0" max="100" step="50" value={dungeonTimestamp}
