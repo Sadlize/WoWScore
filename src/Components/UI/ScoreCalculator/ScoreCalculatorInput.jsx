@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import clsx from "clsx";
-import {calcPointsForKeyLevel} from "../../../utils/ScoreCalculator/calcPointsForKeyLevel";
 import ScoreCalculatorModal from "./ScoreCalculatorModal";
 import {AiFillStar} from "react-icons/ai";
 import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
 import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
 
-const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setScorePerDungeon}) => {
-    const [input, setInput] = useState('')
+const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDungeon, setScorePerDungeon}) => {
+    let input = inputValue
 
     const isDifferent = (value) => {
         value = value.replace(/\D/g, '')
@@ -22,11 +21,11 @@ const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setSco
 		const value = event.target.value
 		if (value.length <= event.target.maxLength) {
 			if (isDifferent(value)) {
-				setInput(value)
+                input = inputValue
 				setScorePerDungeon(prevState => (
 					{
 						...prevState,
-						[index]: {...prevState[index], [week]: calcPointsForKeyLevel(+value)}
+						[index]: {...prevState[index], [week]: +value}
 					}
 				))
 			}

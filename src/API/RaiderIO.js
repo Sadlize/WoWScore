@@ -48,4 +48,14 @@ export default class RaiderIO {
         return periodStart + ' – ' + periodEnd
     }
 
+    static async getMPlusBestRuns(region, realm, name, run) {
+        return await axios.get('https://raider.io/api/v1/characters/profile', {
+            params: {
+                region: region,
+                realm: realm,
+                name: name,
+                fields: `mythic_plus_${run}_runs`
+            }
+        })
+    }
 }

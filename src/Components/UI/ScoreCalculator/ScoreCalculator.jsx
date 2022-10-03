@@ -1,21 +1,24 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import Tooltip from "../Tooltip/Tooltip";
 import ScoreCalculatorInput from "./ScoreCalculatorInput";
 import './ScoreCalculator.css'
 import {FaQuestion} from "react-icons/fa";
 import TooltipGroup from "../Tooltip/TooltipGroup";
 import {GiClick} from "react-icons/gi";
+import {calcPointsForKeyLevel} from "../../../utils/calculatorFunctionHandler";
+import apiFunctionHandler from "../../../utils/apiFunctionHandler";
+import {useFetching} from "../../../hooks/useFetching";
 
 const ScoreCalculator = () => {
 
     const [scorePerDungeon, setScorePerDungeon] = useState(
         {
-            STRT: {Tyrannical: 0, Fortified: 0},
-            GMBT: {Tyrannical: 0, Fortified: 0},
             YARD: {Tyrannical: 0, Fortified: 0},
+            STRT: {Tyrannical: 0, Fortified: 0},
+            GD: {Tyrannical: 0, Fortified: 0},
             WORK: {Tyrannical: 0, Fortified: 0},
             ID: {Tyrannical: 0, Fortified: 0},
-            GD: {Tyrannical: 0, Fortified: 0},
+            GMBT: {Tyrannical: 0, Fortified: 0},
             LOWR: {Tyrannical: 0, Fortified: 0},
             UPPR: {Tyrannical: 0, Fortified: 0},
         })
@@ -26,8 +29,14 @@ const ScoreCalculator = () => {
     dungeonKey.forEach(item =>
         sumDungeonScoreValues += Object.values(scorePerDungeon[item])
             .sort((a, b) => b - a)
-            .reduce((a, b) => (a * 1.5) + (b * 0.5))
+            .reduce((a, b) => (calcPointsForKeyLevel(a) * 1.5) + (calcPointsForKeyLevel(b) * 0.5))
     )
+
+    const [importInput, setImportInput] = useState('')
+    const [fetchImportScore] = useFetching(useCallback(async (importInput) => {
+        const response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
+        setScorePerDungeon(response)
+    }, []))
 
     return (
         <div>
@@ -50,6 +59,7 @@ const ScoreCalculator = () => {
                         {dungeonWeeks.map(week => (
                             <ScoreCalculatorInput
                                 key={key + '' + week}
+                                inputValue={scorePerDungeon[key][week]}
                                 week={week}
                                 index={key}
                                 placeholder={'0'}
@@ -60,11 +70,11 @@ const ScoreCalculator = () => {
                     </div>
                 ))}
                 <h2 className='content-heading'><span>or<br/>Import</span></h2>
-                <input/>
+                <input value={importInput} onChange={e => {setImportInput(e.target.value)}}/>
                 <select>
                     <option>eu</option>
                 </select>
-                <button>123</button>
+                <button onClick={() => {fetchImportScore(importInput)}}>123</button>
             </div>
         </div>
     );
