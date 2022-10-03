@@ -25,19 +25,19 @@ function App() {
     // }
     return (
         <div className="App">
-            <div style={{display: "inline-flex", alignItems: 'center'}}>
+            <div className='SiteTitle'>
                 <GiChemicalArrow size='3em'/>
                 <h1>WoWScore</h1>
-                <GiChemicalArrow size='3em'/>
+                <GiChemicalArrow size='3em' style={{transform: 'scale(-1,1)'}}/>
             </div>
 
             <div className='content-box'>
+                <ScoreCalculator/>
                 <Tab title={'Affixes'}>
                     <CurrentAffixes title={'Current'}/>
                     <AffixesSchedule title={'Schedule'}/>
                 </Tab>
                 <CutoffScores region={region}/>
-                <ScoreCalculator/>
 
             </div>
 

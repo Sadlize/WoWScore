@@ -34,6 +34,11 @@
     text-align: center;
 }
 
+.SiteTitle {
+    display: inline-flex;
+    align-items: center;
+}
+
 body {
     background: #181610;
     font-family: lato, sans-serif;
@@ -46,6 +51,8 @@ body {
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    margin: auto;
+    max-width: 800px;
 }
 
 .content-heading {
