@@ -2,10 +2,10 @@ import './App.css';
 import CutoffScores from "./Components/UI/CutoffScores/CutoffScores";
 import ScoreCalculator from "./Components/UI/ScoreCalculator/ScoreCalculator";
 import Tab from "./Components/Tab/Tab";
-// import logo from './images/logo.png'
 import CurrentAffixes from "./Components/UI/Affixes/CurrentAffixes";
 import AffixesSchedule from "./Components/UI/Affixes/AffixesSchedule";
 import React from "react";
+import {GiChemicalArrow} from "react-icons/gi";
 
 function App() {
 
@@ -25,8 +25,11 @@ function App() {
     // }
     return (
         <div className="App">
-            {/*<img src={logo}/>*/}
-            <h1>WoWScore</h1>
+            <div style={{display: "inline-flex", alignItems: 'center'}}>
+                <GiChemicalArrow size='3em'/>
+                <h1>WoWScore</h1>
+                <GiChemicalArrow size='3em'/>
+            </div>
 
             <div className='content-box'>
                 <Tab title={'Affixes'}>
