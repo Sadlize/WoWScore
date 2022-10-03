@@ -57,9 +57,8 @@ const ScoreCalculatorInput = ({week, index, placeholder, scorePerDungeon, setSco
                     <div>
                         <div className='StarTimestamp'>
                             <IconRadioWrapper
-                                color={"#ffbb4d"} count={'asd'}
-                                state={{radioOption, setRadioOption}}
-                                setDungeonTimestamp={setDungeonTimestamp}
+                                color={"#ffbb4d"} count={3}
+                                states={{radioOption, setRadioOption, setDungeonTimestamp}}
                             >
                                 <IconRadioInput
                                     name={index + week}

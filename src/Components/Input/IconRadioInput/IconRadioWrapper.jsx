@@ -1,7 +1,7 @@
 import React from 'react';
 import {IconContext} from "react-icons";
 
-const IconRadioWrapper = ({children, count, color = 'gold', ...states}) => {
+const IconRadioWrapper = ({children, count, color = 'gold', states}) => {
     let newChildren = []
 
     if (count > 0) {
