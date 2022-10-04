@@ -10,23 +10,43 @@ import apiFunctionHandler from "../../../utils/apiFunctionHandler";
 import {useFetching} from "../../../hooks/useFetching";
 
 const ScoreCalculator = () => {
+    const currentDungeons = ['YARD', 'STRT', 'GD', 'WORK', 'ID', 'GMBT', 'LOWR', 'UPPR']
+    let dungeonValues = {}
+    currentDungeons.forEach(i => {
+            dungeonValues[i] = {Tyrannical: 0, Fortified: 0}
+        }
+    )
+    const [scorePerDungeon, setScorePerDungeon] = useState(dungeonValues)
 
-    const [scorePerDungeon, setScorePerDungeon] = useState(
-        {
-            YARD: {Tyrannical: 0, Fortified: 0},
-            STRT: {Tyrannical: 0, Fortified: 0},
-            GD: {Tyrannical: 0, Fortified: 0},
-            WORK: {Tyrannical: 0, Fortified: 0},
-            ID: {Tyrannical: 0, Fortified: 0},
-            GMBT: {Tyrannical: 0, Fortified: 0},
-            LOWR: {Tyrannical: 0, Fortified: 0},
-            UPPR: {Tyrannical: 0, Fortified: 0},
-        })
-    const dungeonKey = Object.keys(scorePerDungeon)
-    const dungeonWeeks = Object.keys(scorePerDungeon[dungeonKey[0]])
-
+    // setScorePerDungeon()
+    // const currentDungeons = ['YARD', 'STRT', 'GD', 'WORK', 'ID', 'GMBT', 'LOWR', 'UPPR']
+    // const currentDungeons = ['YARD']
+    // const [scorePerDungeon, setScorePerDungeon] = useState({})
+    // currentDungeons.forEach(i => {
+    //         scorePerDungeon[i] =
+    //             {
+    //                 Best: {
+    //                     mythic_level: 10,
+    //                     num_keystone_upgrades: 0,
+    //                     score: 0,
+    //                     par_time_ms: 0,
+    //                     clear_time_ms: 0,
+    //                 },
+    //                 Alternate: {
+    //                     mythic_level: 0,
+    //                     num_keystone_upgrades: 0,
+    //                     score: 0,
+    //                     par_time_ms: 0,
+    //                     clear_time_ms: 0,
+    //                 },
+    //             }
+    //     }
+    // )
+    // const dungeonKey = Object.keys(scorePerDungeon)
+    const dungeonWeeks = Object.keys(scorePerDungeon[currentDungeons[0]])
+    // console.log(dungeonKey)
     let sumDungeonScoreValues = 0
-    dungeonKey.forEach(item =>
+    currentDungeons.forEach(item =>
         sumDungeonScoreValues += Object.values(scorePerDungeon[item])
             .sort((a, b) => b - a)
             .reduce((a, b) => (calcPointsForKeyLevel(a) * 1.5) + (calcPointsForKeyLevel(b) * 0.5))
@@ -53,7 +73,7 @@ const ScoreCalculator = () => {
                 </TooltipGroup>
 
                 <p className='CalcScore'>{sumDungeonScoreValues}</p>
-                {dungeonKey.map((key) => (
+                {currentDungeons.map((key) => (
                     <div id={key} key={key} className="dungeon-grid">
                         <span>{key}</span>
                         {dungeonWeeks.map(week => (
@@ -70,11 +90,16 @@ const ScoreCalculator = () => {
                     </div>
                 ))}
                 <h2 className='content-heading'><span>or<br/>Import</span></h2>
-                <input value={importInput} onChange={e => {setImportInput(e.target.value)}}/>
+                <input value={importInput} onChange={e => {
+                    setImportInput(e.target.value)
+                }}/>
                 <select>
                     <option>eu</option>
                 </select>
-                <button onClick={() => {fetchImportScore(importInput)}}>123</button>
+                <button onClick={() => {
+                    fetchImportScore(importInput)
+                }}>123
+                </button>
             </div>
         </div>
     );

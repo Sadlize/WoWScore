@@ -6,7 +6,7 @@ import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
 import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
 
 const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDungeon, setScorePerDungeon}) => {
-    let input = inputValue
+    const [input, setInput] = useState(inputValue)
 
     const isDifferent = (value) => {
         value = value.replace(/\D/g, '')
@@ -17,20 +17,20 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
         }
     }
 
-	const inputNewValue = (event) => {
-		const value = event.target.value
-		if (value.length <= event.target.maxLength) {
-			if (isDifferent(value)) {
-                input = inputValue
-				setScorePerDungeon(prevState => (
-					{
-						...prevState,
-						[index]: {...prevState[index], [week]: +value}
-					}
-				))
-			}
-		}
-	}
+    const inputNewValue = (event) => {
+        const value = event.target.value
+        if (value.length <= event.target.maxLength) {
+            if (isDifferent(value)) {
+                setInput(value)
+                setScorePerDungeon(prevState => (
+                    {
+                        ...prevState,
+                        [index]: {...prevState[index], [week]: +value}
+                    }
+                ))
+            }
+        }
+    }
 
     const [modal, setModal] = useState(false)
 
@@ -43,14 +43,17 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 <div className="dungeon-grid">
                     <h2 className={'content-heading'}>{index + ' ' + week}</h2>
                     <input
-						value={input}
-						placeholder={placeholder}
-						onFocus={(e) => e.target.placeholder = ''}
-						onBlur={(e) => e.target.placeholder = placeholder}
-						type='text' autoComplete="off" maxLength='2'
-						className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
-						onChange={e => {
-							inputNewValue(e)
+                        value={`${input}`}
+                        placeholder={placeholder}
+                        onFocus={(e) => {
+                            e.target.placeholder = ''
+                            e.target.value = ''
+                        }}
+                        onBlur={(e) => e.target.placeholder = placeholder}
+                        type='text' autoComplete="off" maxLength='2'
+                        className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
+                        onChange={e => {
+                            inputNewValue(e)
                         }}
                     />
                     <div>
@@ -79,14 +82,17 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 </div>
             </ScoreCalculatorModal>
             <input
-                value={input}
+                value={`${input}`}
                 placeholder={placeholder}
-                onFocus={(e) => e.target.placeholder = ''}
+                onFocus={(e) => {
+                    e.target.placeholder = ''
+                    e.target.value = ''
+                }}
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'
                 className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
                 onChange={e => {
-					inputNewValue(e)
+                    inputNewValue(e)
                 }}
                 onContextMenu={(e) => {
                     e.preventDefault()
