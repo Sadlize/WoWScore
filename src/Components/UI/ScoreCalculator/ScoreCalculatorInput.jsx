@@ -6,15 +6,10 @@ import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
 import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
 
 const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDungeon, setScorePerDungeon}) => {
-    const [input, setInput] = useState(inputValue)
-
+    const [input, setInput] = useState(`${inputValue}`)
     const isDifferent = (value) => {
         value = value.replace(/\D/g, '')
-        if (input === value) {
-            return 0 //same
-        } else {
-            return 1 //different
-        }
+        return input !== value; //0-same 1-different
     }
 
     const inputNewValue = (event) => {
@@ -47,7 +42,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                         placeholder={placeholder}
                         onFocus={(e) => {
                             e.target.placeholder = ''
-                            e.target.value = ''
+                            if (e.target.value === '0') e.target.value = ''
                         }}
                         onBlur={(e) => e.target.placeholder = placeholder}
                         type='text' autoComplete="off" maxLength='2'
@@ -86,7 +81,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 placeholder={placeholder}
                 onFocus={(e) => {
                     e.target.placeholder = ''
-                    e.target.value = ''
+                    if (e.target.value === '0') e.target.value = ''
                 }}
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'

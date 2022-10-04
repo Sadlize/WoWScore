@@ -13,7 +13,7 @@ const ScoreCalculator = () => {
     const currentDungeons = ['YARD', 'STRT', 'GD', 'WORK', 'ID', 'GMBT', 'LOWR', 'UPPR']
     let dungeonValues = {}
     currentDungeons.forEach(i => {
-            dungeonValues[i] = {Tyrannical: 0, Fortified: 0}
+            dungeonValues[i] = {Best: 0, Alternate: 0}
         }
     )
     const [scorePerDungeon, setScorePerDungeon] = useState(dungeonValues)
