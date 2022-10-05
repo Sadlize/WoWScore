@@ -7,6 +7,7 @@ import TooltipGroup from "../Tooltip/TooltipGroup";
 import {GiClick} from "react-icons/gi";
 import apiFunctionHandler from "../../../utils/apiFunctionHandler";
 import {useFetching} from "../../../hooks/useFetching";
+import _ from "lodash";
 
 const ScoreCalculator = () => {
     const currentDungeons = ['STRT', 'GMBT', 'YARD', 'WORK', 'ID', 'GD', 'LOWR', 'UPPR']
@@ -38,16 +39,19 @@ const ScoreCalculator = () => {
     currentDungeons.forEach((item) =>
         dungeonWeeks.forEach(week => {
             week === dungeonWeeks[0]
-                ? sumDungeonScoreValues += (scorePerDungeon[item][week].score * 1.5)
-                : sumDungeonScoreValues += (scorePerDungeon[item][week].score * 0.5)
+                ? sumDungeonScoreValues += (scorePerDungeon[item][week]?.score * 1.5)
+                : sumDungeonScoreValues += (scorePerDungeon[item][week]?.score * 0.5)
         })
     )
-    if(sumDungeonScoreValues %2!== 0) sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
+    if (sumDungeonScoreValues % 2 !== 0) sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
 
     const [importInput, setImportInput] = useState('')
     const [fetchImportScore] = useFetching(useCallback(async (importInput) => {
         const response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
-        setScorePerDungeon(response)
+        console.log(response)
+        setScorePerDungeon(prevState =>
+            _.merge({}, prevState, response)
+        )
     }, []))
 
     return (
@@ -70,7 +74,7 @@ const ScoreCalculator = () => {
                         {dungeonWeeks.map(week => (
                             <ScoreCalculatorInput
                                 key={key + '' + week}
-                                inputValue={scorePerDungeon[key][week].mythic_level}
+                                inputValue={scorePerDungeon[key][week]?.mythic_level}
                                 week={week}
                                 index={key}
                                 placeholder={'0'}

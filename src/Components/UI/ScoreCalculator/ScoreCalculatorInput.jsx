@@ -56,7 +56,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                         type='text' autoComplete="off" maxLength='2'
                         className={
                             clsx({
-                                'grayscale100': scorePerDungeon[index][week].score === 0 ||
+                                'grayscale100': scorePerDungeon[index][week]?.score === 0 ||
                                     scorePerDungeon[index][week]?.num_keystone_upgrades === 0
                             }, 'CalcInput')
                         }
@@ -99,7 +99,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'
                 className={clsx({
-                    'grayscale100': scorePerDungeon[index][week].score === 0 ||
+                    'grayscale100': scorePerDungeon[index][week]?.score === 0 ||
                         scorePerDungeon[index][week]?.num_keystone_upgrades === 0
                 }, 'CalcInput')}
                 onChange={e => {

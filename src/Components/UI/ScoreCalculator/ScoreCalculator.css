@@ -6,7 +6,7 @@
 .dungeon-grid {
     position: relative;
     display: inline-grid;
-    gap: 5px;
+    /*gap: 5px;*/
     justify-items: center;
 }
 
