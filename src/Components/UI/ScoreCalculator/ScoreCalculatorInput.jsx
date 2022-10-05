@@ -4,25 +4,33 @@ import ScoreCalculatorModal from "./ScoreCalculatorModal";
 import {AiFillStar} from "react-icons/ai";
 import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
 import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
+import _ from "lodash";
+import {calcPointsForKeyLevel} from "../../../utils/calculatorFunctionHandler";
 
 const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDungeon, setScorePerDungeon}) => {
-    const [input, setInput] = useState(`${inputValue}`)
+
     const isDifferent = (value) => {
         value = value.replace(/\D/g, '')
-        return input !== value; //0-same 1-different
+        return inputValue !== value; //true - different  false - same
     }
 
     const inputNewValue = (event) => {
         const value = event.target.value
         if (value.length <= event.target.maxLength) {
             if (isDifferent(value)) {
-                setInput(value)
-                setScorePerDungeon(prevState => (
-                    {
-                        ...prevState,
-                        [index]: {...prevState[index], [week]: +value}
-                    }
-                ))
+                if (!isNaN(value)) {
+                    setScorePerDungeon(prevState =>
+                        _.merge({}, prevState, {
+                            [index]: {
+                                [week]: {
+                                    mythic_level: +value,
+                                    score: calcPointsForKeyLevel(+value),
+                                    num_keystone_upgrades: 1,
+                                }
+                            }
+                        })
+                    )
+                }
             }
         }
     }
@@ -38,7 +46,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 <div className="dungeon-grid">
                     <h2 className={'content-heading'}>{index + ' ' + week}</h2>
                     <input
-                        value={`${input}`}
+                        value={`${inputValue}`}
                         placeholder={placeholder}
                         onFocus={(e) => {
                             e.target.placeholder = ''
@@ -46,7 +54,12 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                         }}
                         onBlur={(e) => e.target.placeholder = placeholder}
                         type='text' autoComplete="off" maxLength='2'
-                        className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
+                        className={
+                            clsx({
+                                'grayscale100': scorePerDungeon[index][week].score === 0 ||
+                                    scorePerDungeon[index][week]?.num_keystone_upgrades === 0
+                            }, 'CalcInput')
+                        }
                         onChange={e => {
                             inputNewValue(e)
                         }}
@@ -77,7 +90,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 </div>
             </ScoreCalculatorModal>
             <input
-                value={`${input}`}
+                value={`${inputValue}`}
                 placeholder={placeholder}
                 onFocus={(e) => {
                     e.target.placeholder = ''
@@ -85,7 +98,10 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 }}
                 onBlur={(e) => e.target.placeholder = placeholder}
                 type='text' autoComplete="off" maxLength='2'
-                className={clsx({'grayscale100': scorePerDungeon[index][week] === 0}, 'CalcInput')}
+                className={clsx({
+                    'grayscale100': scorePerDungeon[index][week].score === 0 ||
+                        scorePerDungeon[index][week]?.num_keystone_upgrades === 0
+                }, 'CalcInput')}
                 onChange={e => {
                     inputNewValue(e)
                 }}
