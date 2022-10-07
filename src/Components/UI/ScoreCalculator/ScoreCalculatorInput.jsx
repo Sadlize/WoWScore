@@ -19,7 +19,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                 if (!isNaN(value)) changeScorePerDungeon(
                     {
                         'mythic_level': +value,
-                        'score': calcPointsForKeyLevel(+value),
+                        'score': calcPointsForKeyLevel(+value, dungeonTimestamp, rangeMax),
                         'num_keystone_upgrades': 1,
                         'clear_time_ms': 0,
                     },
@@ -90,6 +90,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                                 week={week}
                                 currentOption={radioOption}
                                 dungeonTimestamp={[rangeMin, 0, rangeMax / 2, rangeMax]}
+                                scorePerDungeon={scorePerDungeon}
                                 setScorePerDungeon={setScorePerDungeon}
                             />
                         </div>
@@ -98,19 +99,30 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                             value={dungeonTimestamp}
                             style={{width: '300px'}}
                             onChange={(e) => {
-                                if (+e.target.value >= rangeMin) {
-                                    changeScorePerDungeon({'num_keystone_upgrades': 0})
+                                if (scorePerDungeon[index][week]?.mythic_level >= 2) {
+                                    if (+e.target.value >= rangeMin) {
+                                        changeScorePerDungeon({'num_keystone_upgrades': 0})
+                                    }
+                                    if (+e.target.value >= 0) {
+                                        changeScorePerDungeon({'num_keystone_upgrades': 1})
+                                    }
+                                    if (+e.target.value >= rangeMax / 2) {
+                                        changeScorePerDungeon({'num_keystone_upgrades': 2})
+                                    }
+                                    if (+e.target.value === rangeMax) {
+                                        changeScorePerDungeon({'num_keystone_upgrades': 3})
+                                    }
+                                    changeScorePerDungeon(
+                                        {
+                                            clear_time_ms: +e.target.value,
+                                            score: calcPointsForKeyLevel(
+                                                scorePerDungeon[index][week]?.mythic_level,
+                                                +e.target.value,
+                                                rangeMax
+                                            ),
+                                        },
+                                    )
                                 }
-                                if (+e.target.value >= 0) {
-                                    changeScorePerDungeon({'num_keystone_upgrades': 1})
-                                }
-                                if (+e.target.value >= rangeMax / 2) {
-                                    changeScorePerDungeon({'num_keystone_upgrades': 2})
-                                }
-                                if (+e.target.value === rangeMax) {
-                                    changeScorePerDungeon({'num_keystone_upgrades': 3})
-                                }
-                                changeScorePerDungeon({'clear_time_ms': +e.target.value})
                             }}
                         />
                     </div>

@@ -1,8 +1,15 @@
 import React from 'react';
 import clsx from "clsx";
 import _ from "lodash";
+import {calcPointsForKeyLevel} from "../../../utils/calculatorFunctionHandler";
+// import changeScorePerDungeon from '../../UI/ScoreCalculator/ScoreCalculatorInput';
 
-const IconRadioInput = ({count, id, name, icon, index, week, currentOption, dungeonTimestamp, setScorePerDungeon}) => {
+const IconRadioInput = (
+    {
+        count, id, name, icon, index, week, currentOption,
+        dungeonTimestamp, scorePerDungeon, setScorePerDungeon
+    }) => {
+
     const output = []
     let elementIcon
 
@@ -21,12 +28,21 @@ const IconRadioInput = ({count, id, name, icon, index, week, currentOption, dung
                         checked={currentOption === i} type="radio"
                         name={name} id={id + i}
                         onChange={() => {
+                            // changeScorePerDungeon({
+                            //     'num_keystone_upgrades': 1,
+                            //     clear_time_ms: dungeonTimestamp[i],
+                            // })
                             setScorePerDungeon(prevState =>
                                 _.merge({}, prevState, {
                                     [index]: {
                                         [week]: {
                                             num_keystone_upgrades: i,
                                             clear_time_ms: dungeonTimestamp[i],
+                                            score: calcPointsForKeyLevel(
+                                                scorePerDungeon[index][week]?.mythic_level,
+                                                dungeonTimestamp[i],
+                                                dungeonTimestamp[3],
+                                            ),
                                         },
                                     }
                                 }))
@@ -36,8 +52,9 @@ const IconRadioInput = ({count, id, name, icon, index, week, currentOption, dung
                         {elementIcon}
                     </label>
                 </div>
-            )}
+            )
         }
+    }
     return (
         <>
             {output}

@@ -54,7 +54,6 @@ const ScoreCalculator = () => {
         )
     }, []))
 
-    // console.log(scorePerDungeon)
     return (
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>

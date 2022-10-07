@@ -75,7 +75,7 @@
     width: 2px;
     background: gold;
     transform: translate(-50%, 100%);
-    /*pointer-events: none;*/
+    pointer-events: none;
 }
 
 /* HIDE RADIO */
