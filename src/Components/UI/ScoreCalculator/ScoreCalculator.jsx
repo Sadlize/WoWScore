@@ -8,6 +8,7 @@ import {GiClick} from "react-icons/gi";
 import apiFunctionHandler from "../../../utils/apiFunctionHandler";
 import {useFetching} from "../../../hooks/useFetching";
 import _ from "lodash";
+import UpgradeStars from "./UpgradeStars";
 
 const ScoreCalculator = () => {
     const currentDungeons = ['STRT', 'GMBT', 'YARD', 'WORK', 'ID', 'GD', 'LOWR', 'UPPR']
@@ -17,14 +18,14 @@ const ScoreCalculator = () => {
                 {
                     Best: {
                         mythic_level: 0,
-                        num_keystone_upgrades: 0,
+                        num_keystone_upgrades: 1,
                         score: 0,
                         par_time_ms: 0,
                         clear_time_ms: 0,
                     },
                     Alternate: {
                         mythic_level: 0,
-                        num_keystone_upgrades: 0,
+                        num_keystone_upgrades: 1,
                         score: 0,
                         par_time_ms: 0,
                         clear_time_ms: 0,
@@ -48,12 +49,12 @@ const ScoreCalculator = () => {
     const [importInput, setImportInput] = useState('')
     const [fetchImportScore] = useFetching(useCallback(async (importInput) => {
         const response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
-        console.log(response)
         setScorePerDungeon(prevState =>
             _.merge({}, prevState, response)
         )
     }, []))
 
+    // console.log(scorePerDungeon)
     return (
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
@@ -68,19 +69,21 @@ const ScoreCalculator = () => {
                     </Tooltip>
                 </TooltipGroup>
                 <p className='CalcScore'>{sumDungeonScoreValues}</p>
-                {currentDungeons.map((key) => (
-                    <div id={key} key={key} className="dungeon-grid">
-                        <span>{key}</span>
+                {currentDungeons.map((index) => (
+                    <div id={index} key={index} className="dungeon-grid">
+                        <span>{index}</span>
                         {dungeonWeeks.map(week => (
-                            <ScoreCalculatorInput
-                                key={key + '' + week}
-                                inputValue={scorePerDungeon[key][week]?.mythic_level}
-                                week={week}
-                                index={key}
-                                placeholder={'0'}
-                                scorePerDungeon={scorePerDungeon}
-                                setScorePerDungeon={setScorePerDungeon}
-                            />
+                            <div key={index + '' + week}>
+                                <ScoreCalculatorInput
+                                    inputValue={scorePerDungeon[index][week]?.mythic_level}
+                                    week={week}
+                                    index={index}
+                                    placeholder={'0'}
+                                    scorePerDungeon={scorePerDungeon}
+                                    setScorePerDungeon={setScorePerDungeon}
+                                />
+                                <UpgradeStars upgrade={scorePerDungeon[index][week]?.num_keystone_upgrades}/>
+                            </div>
                         ))}
                     </div>
                 ))}

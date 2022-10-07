@@ -6,7 +6,6 @@
 .dungeon-grid {
     position: relative;
     display: inline-grid;
-    /*gap: 5px;*/
     justify-items: center;
 }
 
@@ -51,10 +50,34 @@
     align-items: center;
 }
 
+.UpgradeStars {
+    height: 20px;
+}
+
 .StarTimestamp {
     justify-content: space-between;
     display: flex;
 }
+
+.star0{
+    margin-right: 22.5%;
+}
+.star0, .star1, .star2, .star3 {
+    position: relative;
+}
+
+.star0:after, .star1:after, .star2:after, .star3:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 20px;
+    width: 2px;
+    background: gold;
+    transform: translate(-50%, 100%);
+    /*pointer-events: none;*/
+}
+
 /* HIDE RADIO */
 [type=radio] {
     position: absolute;

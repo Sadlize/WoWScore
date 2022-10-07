@@ -2,10 +2,9 @@ import React, {useState} from 'react';
 import clsx from "clsx";
 import ScoreCalculatorModal from "./ScoreCalculatorModal";
 import {AiFillStar} from "react-icons/ai";
-import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
-import IconRadioWrapper from "../../Input/IconRadioInput/IconRadioWrapper";
 import _ from "lodash";
 import {calcPointsForKeyLevel} from "../../../utils/calculatorFunctionHandler";
+import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput";
 
 const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDungeon, setScorePerDungeon}) => {
 
@@ -13,32 +12,48 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
         value = value.replace(/\D/g, '')
         return inputValue !== value; //true - different  false - same
     }
-
     const inputNewValue = (event) => {
         const value = event.target.value
         if (value.length <= event.target.maxLength) {
             if (isDifferent(value)) {
-                if (!isNaN(value)) {
-                    setScorePerDungeon(prevState =>
-                        _.merge({}, prevState, {
-                            [index]: {
-                                [week]: {
-                                    mythic_level: +value,
-                                    score: calcPointsForKeyLevel(+value),
-                                    num_keystone_upgrades: 1,
-                                }
-                            }
-                        })
-                    )
-                }
+                if (!isNaN(value)) changeScorePerDungeon(
+                    {
+                        'mythic_level': +value,
+                        'score': calcPointsForKeyLevel(+value),
+                        'num_keystone_upgrades': 1,
+                        'clear_time_ms': 0,
+                    },
+                )
             }
         }
     }
+    const changeScorePerDungeon = (values) => {
+        setScorePerDungeon(prevState =>
+            _.merge({}, prevState, {
+                [index]: {
+                    [week]: values
+                }
+            })
+        )
+    }
 
     const [modal, setModal] = useState(false)
+    let radioOption = scorePerDungeon[index][week]?.num_keystone_upgrades
+    const keyMaxTimestamp = {
+        STRT: 2340999,
+        GD: 1800999,
+        GMBT: 1800999,
+        ID: 1800999,
+        LOWR: 2520999,
+        UPPR: 2100999,
+        WORK: 1920999,
+        YARD: 2280999,
+    }
+    const dungeonTimestamp = scorePerDungeon[index][week]?.clear_time_ms
 
-    const [radioOption, setRadioOption] = useState(0)
-    const [dungeonTimestamp, setDungeonTimestamp] = useState(0)
+    const rangeMax = Math.round(keyMaxTimestamp[index] * 0.4)
+    const rangeMin = rangeMax * -1
+    const rangeStep = rangeMax * 0.02
 
     return (
         <>
@@ -66,24 +81,36 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                     />
                     <div>
                         <div className='StarTimestamp'>
-                            <IconRadioWrapper
-                                color={"#ffbb4d"} count={3}
-                                states={{radioOption, setRadioOption, setDungeonTimestamp}}
-                            >
-                                <IconRadioInput
-                                    name={index + week}
-                                    icon={<AiFillStar/>}
-                                    id={index + week[0] + 'star'}
-                                />
-                            </IconRadioWrapper>
+                            <IconRadioInput
+                                count={3}
+                                id={index + week[0] + 'star'}
+                                name={index + week}
+                                icon={<AiFillStar style={{color: "#ffbb4d"}}/>}
+                                index={index}
+                                week={week}
+                                currentOption={radioOption}
+                                dungeonTimestamp={[rangeMin, 0, rangeMax / 2, rangeMax]}
+                                setScorePerDungeon={setScorePerDungeon}
+                            />
                         </div>
                         <input
-                            type="range" min="0" max="100" step="50" value={dungeonTimestamp}
+                            type="range" min={rangeMin} max={rangeMax} step={rangeStep}
+                            value={dungeonTimestamp}
+                            style={{width: '300px'}}
                             onChange={(e) => {
-                                if (+e.target.value === 0) setRadioOption(0)
-                                if (+e.target.value === 50) setRadioOption(1)
-                                if (+e.target.value === 100) setRadioOption(2)
-                                setDungeonTimestamp(+e.target.value)
+                                if (+e.target.value >= rangeMin) {
+                                    changeScorePerDungeon({'num_keystone_upgrades': 0})
+                                }
+                                if (+e.target.value >= 0) {
+                                    changeScorePerDungeon({'num_keystone_upgrades': 1})
+                                }
+                                if (+e.target.value >= rangeMax / 2) {
+                                    changeScorePerDungeon({'num_keystone_upgrades': 2})
+                                }
+                                if (+e.target.value === rangeMax) {
+                                    changeScorePerDungeon({'num_keystone_upgrades': 3})
+                                }
+                                changeScorePerDungeon({'clear_time_ms': +e.target.value})
                             }}
                         />
                     </div>

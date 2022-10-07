@@ -1,24 +1,46 @@
 import React from 'react';
 import clsx from "clsx";
+import _ from "lodash";
 
-const IconRadioInput = ({id, name, icon, option, ...states}) => {
+const IconRadioInput = ({count, id, name, icon, index, week, currentOption, dungeonTimestamp, setScorePerDungeon}) => {
+    const output = []
+    let elementIcon
 
+    if (count > 0) {
+        for (let i = 0; i <= count; i++) {
+            if (i === 0) {
+                elementIcon = React.cloneElement(icon, {
+                    style: {filter: 'brightness(0.5)'},
+                })
+            } else elementIcon = icon
+            output.push(
+                <div
+                    key={id + i}
+                    className={clsx({'grayscale100': currentOption < i}, 'star' + i)}>
+                    <input
+                        checked={currentOption === i} type="radio"
+                        name={name} id={id + i}
+                        onChange={() => {
+                            setScorePerDungeon(prevState =>
+                                _.merge({}, prevState, {
+                                    [index]: {
+                                        [week]: {
+                                            num_keystone_upgrades: i,
+                                            clear_time_ms: dungeonTimestamp[i],
+                                        },
+                                    }
+                                }))
+                        }}
+                    />
+                    <label htmlFor={id + i}>
+                        {elementIcon}
+                    </label>
+                </div>
+            )}
+        }
     return (
         <>
-            <input
-                checked={states.radioOption === option} type="radio"
-                name={name} id={id}
-                onChange={(() => {
-                    states.setRadioOption(option)
-                    states.setDungeonTimestamp(option * 50)
-                })}
-            />
-            <label
-                htmlFor={id}
-                className={clsx({'grayscale100': states.radioOption < option})}
-            >
-                {icon}
-            </label>
+            {output}
         </>
     );
 };
