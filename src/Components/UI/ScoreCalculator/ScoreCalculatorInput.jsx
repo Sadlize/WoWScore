@@ -49,8 +49,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
         WORK: 1920999,
         YARD: 2280999,
     }
-    const dungeonTimestamp = scorePerDungeon[index][week]?.clear_time_ms
-
+    const dungeonTimestamp = keyMaxTimestamp[index] - scorePerDungeon[index][week]?.clear_time_ms
     const rangeMax = Math.round(keyMaxTimestamp[index] * 0.4)
     const rangeMin = rangeMax * -1
     const rangeStep = rangeMax * 0.02
@@ -89,6 +88,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                                 index={index}
                                 week={week}
                                 currentOption={radioOption}
+                                keyMaxTimestamp={keyMaxTimestamp[index]}
                                 dungeonTimestamp={[rangeMin, 0, rangeMax / 2, rangeMax]}
                                 scorePerDungeon={scorePerDungeon}
                                 setScorePerDungeon={setScorePerDungeon}
@@ -96,7 +96,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                         </div>
                         <input
                             type="range" min={rangeMin} max={rangeMax} step={rangeStep}
-                            value={dungeonTimestamp}
+                            value={scorePerDungeon[index][week]?.clear_time_ms ? dungeonTimestamp : 0}
                             style={{width: '300px'}}
                             onChange={(e) => {
                                 if (scorePerDungeon[index][week]?.mythic_level >= 2) {
@@ -114,7 +114,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                                     }
                                     changeScorePerDungeon(
                                         {
-                                            clear_time_ms: +e.target.value,
+                                            clear_time_ms: keyMaxTimestamp[index] - +e.target.value,
                                             score: calcPointsForKeyLevel(
                                                 scorePerDungeon[index][week]?.mythic_level,
                                                 +e.target.value,

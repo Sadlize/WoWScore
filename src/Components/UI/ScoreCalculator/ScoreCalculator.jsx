@@ -21,14 +21,12 @@ const ScoreCalculator = () => {
                         num_keystone_upgrades: 1,
                         score: 0,
                         par_time_ms: 0,
-                        clear_time_ms: 0,
                     },
                     Alternate: {
                         mythic_level: 0,
                         num_keystone_upgrades: 1,
                         score: 0,
                         par_time_ms: 0,
-                        clear_time_ms: 0,
                     },
                 }
         }
@@ -47,26 +45,31 @@ const ScoreCalculator = () => {
     if (sumDungeonScoreValues % 2 !== 0) sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
 
     const [importInput, setImportInput] = useState('')
+    const [playerInfo, setPlayerInfo] = useState({})
     const [fetchImportScore] = useFetching(useCallback(async (importInput) => {
-        const response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
+        let response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
         setScorePerDungeon(prevState =>
             _.merge({}, prevState, response)
         )
+        response = await apiFunctionHandler.getPlayerIcon('eu', 'HowlingFjord', importInput)
+        setPlayerInfo(response)
     }, []))
-
+    console.log(scorePerDungeon)
     return (
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
             <div className='content-block'>
                 <TooltipGroup position='top-right'>
                     <Tooltip target={<FaQuestion/>}>
-                        The calculated result displays the number of points received for completing the dungeon
-                        with the minimum timer. In reality, your result will differ, but not lower than this value.
+                        We highly recommend import your character using the special menu below.
+                        Otherwise, for a more accurate result use timestamps.
                     </Tooltip>
                     <Tooltip target={<GiClick/>}>
-                        Inputs support MRB click.
+                        Dungeons inputs support MRB click.
                     </Tooltip>
                 </TooltipGroup>
+                {playerInfo?.data?.thumbnail_url && <img src={playerInfo?.data?.thumbnail_url} alt={'123'} style={{borderRadius: '50%'}}/>}
+
                 <p className='CalcScore'>{sumDungeonScoreValues}</p>
                 {currentDungeons.map((index) => (
                     <div id={index} key={index} className="dungeon-grid">
@@ -87,7 +90,7 @@ const ScoreCalculator = () => {
                     </div>
                 ))}
                 <h2 className='content-heading'><span>or<br/>Import</span></h2>
-                <input value={importInput} onChange={e => {
+                <input value={importInput} placeholder={'YourCharacter-Realm'} onChange={e => {
                     setImportInput(e.target.value)
                 }}/>
                 <select>
@@ -95,7 +98,7 @@ const ScoreCalculator = () => {
                 </select>
                 <button onClick={() => {
                     fetchImportScore(importInput)
-                }}>123
+                }}>Import
                 </button>
             </div>
         </div>

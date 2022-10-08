@@ -7,7 +7,7 @@ import {calcPointsForKeyLevel} from "../../../utils/calculatorFunctionHandler";
 const IconRadioInput = (
     {
         count, id, name, icon, index, week, currentOption,
-        dungeonTimestamp, scorePerDungeon, setScorePerDungeon
+        keyMaxTimestamp, dungeonTimestamp, scorePerDungeon, setScorePerDungeon
     }) => {
 
     const output = []
@@ -32,20 +32,22 @@ const IconRadioInput = (
                             //     'num_keystone_upgrades': 1,
                             //     clear_time_ms: dungeonTimestamp[i],
                             // })
-                            setScorePerDungeon(prevState =>
-                                _.merge({}, prevState, {
-                                    [index]: {
-                                        [week]: {
-                                            num_keystone_upgrades: i,
-                                            clear_time_ms: dungeonTimestamp[i],
-                                            score: calcPointsForKeyLevel(
-                                                scorePerDungeon[index][week]?.mythic_level,
-                                                dungeonTimestamp[i],
-                                                dungeonTimestamp[3],
-                                            ),
-                                        },
-                                    }
-                                }))
+                            if (scorePerDungeon[index][week]?.mythic_level >= 2) {
+                                setScorePerDungeon(prevState =>
+                                    _.merge({}, prevState, {
+                                        [index]: {
+                                            [week]: {
+                                                num_keystone_upgrades: i,
+                                                clear_time_ms: keyMaxTimestamp - dungeonTimestamp[i],
+                                                score: calcPointsForKeyLevel(
+                                                    scorePerDungeon[index][week]?.mythic_level,
+                                                    dungeonTimestamp[i],
+                                                    dungeonTimestamp[3],
+                                                ),
+                                            },
+                                        }
+                                    }))
+                            }
                         }}
                     />
                     <label htmlFor={id + i}>

@@ -58,4 +58,13 @@ export default class RaiderIO {
             }
         })
     }
+    static async getPlayerInfo(region, realm, name) {
+        return await axios.get('https://raider.io/api/v1/characters/profile', {
+            params: {
+                region: region,
+                realm: realm,
+                name: name,
+            }
+        })
+    }
 }

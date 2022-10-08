@@ -35,4 +35,8 @@ export default class apiFunctionHandler {
 
         return _.merge(bestScores, altScores)
     }
+
+    static async getPlayerIcon(region, realm, name) {
+        return await RaiderIO.getPlayerInfo(region, realm, name)
+    }
 }
