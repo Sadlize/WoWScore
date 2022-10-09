@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import Tooltip from "../Tooltip/Tooltip";
 import ScoreCalculatorInput from "./ScoreCalculatorInput";
 import './ScoreCalculator.css'
@@ -44,17 +44,19 @@ const ScoreCalculator = () => {
     )
     if (sumDungeonScoreValues % 2 !== 0) sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
 
-    const [importInput, setImportInput] = useState('')
+    const importInput = useRef(undefined);
     const [playerInfo, setPlayerInfo] = useState({})
     const [fetchImportScore] = useFetching(useCallback(async (importInput) => {
-        let response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
+        const response = await apiFunctionHandler.getPointsByCharacter('eu', 'HowlingFjord', importInput)
         setScorePerDungeon(prevState =>
             _.merge({}, prevState, response)
         )
-        response = await apiFunctionHandler.getPlayerIcon('eu', 'HowlingFjord', importInput)
+    }, []))
+    const [fetchPlayerInfo, isPlayerInfoLoading] = useFetching(useCallback(async (importInput) => {
+        const response = await apiFunctionHandler.getPlayerIcon('eu', 'HowlingFjord', importInput)
         setPlayerInfo(response)
     }, []))
-    console.log(scorePerDungeon)
+
     return (
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
@@ -68,8 +70,42 @@ const ScoreCalculator = () => {
                         Dungeons inputs support MRB click.
                     </Tooltip>
                 </TooltipGroup>
-                {playerInfo?.data?.thumbnail_url && <img src={playerInfo?.data?.thumbnail_url} alt={'123'} style={{borderRadius: '50%'}}/>}
+                {playerInfo?.data
+                    ? <div style={{display: "inline-flex"}}>
+                        <a
+                            href={`https://worldofwarcraft.com/en-gb/character/${playerInfo?.data?.region}/howling-fjord/${playerInfo?.data?.name}`}
+                            title="Armory Profile" className="profile-links wowArmory"
+                            target="_blank"
+                            rel="noreferrer"
+                        > </a>
 
+                        <a
+                            href={playerInfo?.data?.profile_url}
+                            title="RaiderIO Profile" className="profile-links raiderIO"
+                            target="_blank"
+                            rel="noreferrer"
+                        > </a>
+                        {!isPlayerInfoLoading &&
+                            <img
+                                src={playerInfo?.data?.thumbnail_url}
+                                className='guest'
+                                alt={'Character thumbnail'}
+                                style={{borderRadius: '50%'}}
+                            />
+                        }
+                        <a
+                            href={`/`}
+                            title="WarcraftLogs Profile" className="profile-links warcraftLogs"
+                            rel="noreferrer"
+                        > </a>
+                        <a
+                            href={`/`}
+                            title="Character sim on RaidBots" className="profile-links raidBots"
+                            rel="noreferrer"
+                        > </a>
+                    </div>
+                    : <></>
+                }
                 <p className='CalcScore'>{sumDungeonScoreValues}</p>
                 {currentDungeons.map((index) => (
                     <div id={index} key={index} className="dungeon-grid">
@@ -90,14 +126,15 @@ const ScoreCalculator = () => {
                     </div>
                 ))}
                 <h2 className='content-heading'><span>or<br/>Import</span></h2>
-                <input value={importInput} placeholder={'YourCharacter-Realm'} onChange={e => {
-                    setImportInput(e.target.value)
+                <input ref={importInput} placeholder={'YourCharacter-Realm'} onChange={e => {
+                    importInput.current.value = e.target.value
                 }}/>
                 <select>
                     <option>eu</option>
                 </select>
                 <button onClick={() => {
-                    fetchImportScore(importInput)
+                    fetchPlayerInfo(importInput.current.value)
+                    fetchImportScore(importInput.current.value)
                 }}>Import
                 </button>
             </div>

@@ -90,3 +90,37 @@
 [type=radio] + label {
     cursor: pointer;
 }
+
+.profile-links {
+    height: 24px;
+    width: 24px;
+    background-size: contain;
+}
+
+.wowArmory {
+    background: url(https://cdnassets.raider.io/assets/img/wow-icon-a718385c1d75ca9edbb3eed0a5546c30.png);
+    background-size: contain;
+}
+
+.raiderIO {
+    background: url(https://assets.rpglogs.com/img/warcraft/raiderio_square_xl.png);
+    background-size: contain;
+}
+
+.warcraftLogs {
+    background: url(https://cdnassets.raider.io/assets/img/warcraftlogs-icon-1da8feba74b4d68aa3d428ab7f851275.png);
+    background-size: contain;
+}
+
+.raidBots {
+    background: url(https://cdnassets.raider.io/assets/img/raidbots-icon-593d58bfc7657abdb83d8bed6e09c7e4.png);
+    background-size: contain;
+}
+
+.guest {
+    border-radius: 50%;
+    background: url(https://wow.zamimg.com/images/wow/icons/large/inv_misc_horsecostume_front.jpg);
+    background-size: contain;
+    height: 84px;
+    width: 84px;
+}
