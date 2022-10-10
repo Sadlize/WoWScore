@@ -49,7 +49,10 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
         WORK: 1920999,
         YARD: 2280999,
     }
-    const dungeonTimestamp = keyMaxTimestamp[index] - scorePerDungeon[index][week]?.clear_time_ms
+	const clear_time_ms = scorePerDungeon[index][week]?.clear_time_ms
+    const dungeonTimestamp = (clear_time_ms === undefined)
+		? 0
+		: clear_time_ms
     const rangeMax = Math.round(keyMaxTimestamp[index] * 0.4)
     const rangeMin = rangeMax * -1
     const rangeStep = rangeMax * 0.02
