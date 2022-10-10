@@ -1,15 +1,12 @@
 import React, {useCallback, useRef, useState} from 'react';
-import Tooltip from "../../Tooltip/Tooltip";
 import ScoreCalculatorInput from "./ScoreCalculatorInput";
 import './ScoreCalculator.css'
-import {FaQuestion} from "react-icons/fa";
-import TooltipGroup from "../../Tooltip/TooltipGroup";
-import {GiClick} from "react-icons/gi";
 import apiFunctionHandler from "../../../utils/apiFunctionHandler";
 import {useFetching} from "../../../hooks/useFetching";
 import _ from "lodash";
 import UpgradeStars from "./UpgradeStars";
 import ScoreCalculatorLinks from "./ScoreCalculatorLinks";
+import ScoreCalculatorTooltips from "./ScoreCalculatorTooltips";
 
 const ScoreCalculator = () => {
     const currentDungeons = ['STRT', 'GMBT', 'YARD', 'WORK', 'ID', 'GD', 'LOWR', 'UPPR']
@@ -62,15 +59,7 @@ const ScoreCalculator = () => {
         <div>
             <h2 className='content-heading'><span>Score<br/>Calculator</span></h2>
             <div className='content-block'>
-                <TooltipGroup position='top-right'>
-                    <Tooltip target={<FaQuestion/>}>
-                        We highly recommend import your character using the special menu below.
-                        Otherwise, for a more accurate result use timestamps.
-                    </Tooltip>
-                    <Tooltip target={<GiClick/>}>
-                        Dungeons inputs support MRB click.
-                    </Tooltip>
-                </TooltipGroup>
+                <ScoreCalculatorTooltips/>
                 {playerInfo?.data &&
                     <ScoreCalculatorLinks
                         playerInfo={playerInfo}
