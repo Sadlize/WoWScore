@@ -99,7 +99,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                         </div>
                         <input
                             type="range" min={rangeMin} max={rangeMax} step={rangeStep}
-                            value={scorePerDungeon[index][week]?.clear_time_ms ? dungeonTimestamp : 0}
+                            value={dungeonTimestamp}
                             style={{width: '300px'}}
                             onChange={(e) => {
                                 if (scorePerDungeon[index][week]?.mythic_level >= 2) {
@@ -117,7 +117,7 @@ const ScoreCalculatorInput = ({week, index, inputValue, placeholder, scorePerDun
                                     }
                                     changeScorePerDungeon(
                                         {
-                                            clear_time_ms: keyMaxTimestamp[index] - +e.target.value,
+                                            clear_time_ms: +e.target.value,
                                             score: calcPointsForKeyLevel(
                                                 scorePerDungeon[index][week]?.mythic_level,
                                                 +e.target.value,
