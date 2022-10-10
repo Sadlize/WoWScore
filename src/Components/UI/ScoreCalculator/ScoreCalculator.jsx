@@ -1,9 +1,9 @@
 import React, {useCallback, useRef, useState} from 'react';
-import Tooltip from "../Tooltip/Tooltip";
+import Tooltip from "../../Tooltip/Tooltip";
 import ScoreCalculatorInput from "./ScoreCalculatorInput";
 import './ScoreCalculator.css'
 import {FaQuestion} from "react-icons/fa";
-import TooltipGroup from "../Tooltip/TooltipGroup";
+import TooltipGroup from "../../Tooltip/TooltipGroup";
 import {GiClick} from "react-icons/gi";
 import apiFunctionHandler from "../../../utils/apiFunctionHandler";
 import {useFetching} from "../../../hooks/useFetching";
