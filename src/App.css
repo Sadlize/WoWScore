@@ -1,119 +1,128 @@
 #STRT input[type=text] {
-    background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);
+  background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);
 }
 
 #GMBT input[type=text] {
-    background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);
+  background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);
 }
 
 #YARD input[type=text] {
-    background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);
+  background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);
 }
 
 #WORK input[type=text] {
-    background-image: url(images/dungeons/operation-mechagon-workshop.jpg);
+  background-image: url(images/dungeons/operation-mechagon-workshop.jpg);
 }
 
 #ID input[type=text] {
-    background-image: url(images/dungeons/iron-docks.jpg);
+  background-image: url(images/dungeons/iron-docks.jpg);
 }
 
 #GD input[type=text] {
-    background-image: url(images/dungeons/grimrail-depot.jpg);
+  background-image: url(images/dungeons/grimrail-depot.jpg);
 }
 
 #LOWR input[type=text] {
-    background-image: url(images/dungeons/return-to-karazhan-lower.jpg);
+  background-image: url(images/dungeons/return-to-karazhan-lower.jpg);
 }
 
 #UPPR input[type=text] {
-    background-image: url(images/dungeons/return-to-karazhan-upper.jpg);
+  background-image: url(images/dungeons/return-to-karazhan-upper.jpg);
 }
 
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .SiteTitle {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
 }
 
 body {
-    background: #181610;
-    font-family: lato, sans-serif;
-    color: #fff;
+  background: #181610;
+  font-family: lato, sans-serif;
+  color: #fff;
 }
 
 .content-box {
-    align-items: baseline;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    margin: auto;
-    max-width: 800px;
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: auto;
+  max-width: 800px;
 }
 
 .content-heading {
-    pointer-events: none;
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-    text-align: center;
-    letter-spacing: .05em;
-    margin: 0;
-    font: 1.5em/1 Georgia;
-    padding: .2em 0;
-    text-shadow: 0 1px rgba(255, 255, 255, .6);
+  pointer-events: none;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  letter-spacing: .05em;
+  margin: 0;
+  font: 1.5em/1 Georgia;
+  padding: .2em 0;
+  text-shadow: 0 1px rgba(255, 255, 255, .6);
 }
 
 .content-heading:before,
 .content-heading:after {
-    content: "";
-    position: relative;
-    display: inline-block;
-    width: 30%;
-    height: 1px;
-    vertical-align: middle;
+  content: "";
+  position: relative;
+  display: inline-block;
+  width: 30%;
+  height: 1px;
+  vertical-align: middle;
 }
 
 .content-heading:before {
-    left: -.5em;
-    margin: 0 0 0 -50%;
-    background: linear-gradient(to left, #ffffff 30%, transparent);
+  left: -.5em;
+  margin: 0 0 0 -50%;
+  background: linear-gradient(to left, #ffffff 30%, transparent);
 }
 
 .content-heading:after {
-    left: .5em;
-    margin: 0 -50% 0 0;
-    background: linear-gradient(to right, #ffffff 30%, transparent);
+  left: .5em;
+  margin: 0 -50% 0 0;
+  background: linear-gradient(to right, #ffffff 30%, transparent);
 }
 
 .content-heading > span {
-    display: inline-block;
-    vertical-align: middle;
-    white-space: pre;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: pre;
 }
 
 .content-block {
-    position: relative;
-    background: #2e2e2e;
-    border-radius: 4px;
-    padding: 10px;
-    vertical-align: top;
-    min-width: 300px;
-    border: 1px solid #424242;
+  position: relative;
+  background: #2e2e2e;
+  border-radius: 4px;
+  padding: 10px;
+  vertical-align: top;
+  min-width: 300px;
+  border: 1px solid #424242;
 }
 
-.content-block div a img {
-    width: 35px;
+.Affixes {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.AffixesSchedule a img {
+  width: 35px;
+}
+
+.Affixes a img {
+  border-radius: 5%;
 }
 
 .grayscale100 {
-    filter: grayscale(100%);
+  filter: grayscale(100%);
 }
 
 .grayscale0 {
-    filter: none;
+  filter: none;
 }
