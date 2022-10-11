@@ -1,14 +1,14 @@
-import React from "react";
-const TabNavigation = ({id, title, activeTab, setActiveTab}) => {
+import React from "react"
 
-    const handleClick = () => {
-        setActiveTab(id);
-    };
+const TabNavigation = ({ id, title, activeTab, setActiveTab }) => {
+  const handleClick = () => {
+    setActiveTab(id)
+  }
 
-    return (
-        <li onClick={handleClick} className={(activeTab === id ? "active" : "")}>
-            {title}
-        </li>
-    );
-};
-export default TabNavigation;
+  return (
+    <li onClick={handleClick} className={activeTab === id ? "active" : ""}>
+      {title}
+    </li>
+  )
+}
+export default TabNavigation
