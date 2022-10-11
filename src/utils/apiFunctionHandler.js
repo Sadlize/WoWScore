@@ -1,12 +1,12 @@
 import RaiderIO from "../API/RaiderIO"
-import merge from "lodash"
+import merge from "lodash/merge"
 
 export default class apiFunctionHandler {
   static async getPointsByCharacter(region, realm, name) {
     let response = await RaiderIO.getMPlusBestRuns(region, realm, name, "best")
     const bestRuns = response?.data?.mythic_plus_best_runs
     let bestScores = {}
-    bestRuns.forEach((i) => {
+    bestRuns.forEach(i => {
       bestScores[i.short_name] = {
         Best: {
           mythic_level: i.mythic_level,
@@ -21,7 +21,7 @@ export default class apiFunctionHandler {
     response = await RaiderIO.getMPlusBestRuns(region, realm, name, "alternate")
     const altRuns = response?.data?.mythic_plus_alternate_runs
     let altScores = {}
-    altRuns.forEach((i) => {
+    altRuns.forEach(i => {
       altScores[i.short_name] = {
         Alternate: {
           mythic_level: i.mythic_level,
