@@ -1,126 +1,128 @@
 .CalcScore {
-    margin: 0;
-    font-size: 2em;
+  margin: 0;
+  font-size: 2em;
 }
 
 .dungeon-grid {
-    position: relative;
-    display: inline-grid;
-    justify-items: center;
+  position: relative;
+  display: inline-grid;
+  justify-items: center;
+  padding: 0 2px;
 }
 
 .dungeon-grid span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .CalcInput {
-    width: 56px;
-    height: 56px;
-    padding: 0;
-    border-width: 0;
-    color: #f6714a;
-    text-align: center;
-    font-size: 150%;
-    transition-duration: 2s;
-    font-weight: 900;
-    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-width: 0;
+  color: #f6714a;
+  text-align: center;
+  font-size: 150%;
+  transition-duration: 2s;
+  font-weight: 900;
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
 .CalcModal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: none;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .CalcModalContent {
-    padding: 25px;
-    background: #2e2e2e;
-    border-radius: 16px;
-    min-width: 250px;
+  padding: 25px;
+  background: #2e2e2e;
+  border-radius: 16px;
+  min-width: 250px;
 }
 
 .CalcModal.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .UpgradeStars {
-    height: 20px;
+  height: 20px;
 }
 
 .StarTimestamp {
-    justify-content: space-between;
-    display: flex;
+  justify-content: space-between;
+  display: flex;
 }
 
-.star0{
-    margin-right: 22.5%;
+.star0 {
+  margin-right: 22.5%;
 }
+
 .star0, .star1, .star2, .star3 {
-    position: relative;
+  position: relative;
 }
 
 .star0:after, .star1:after, .star2:after, .star3:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    height: 20px;
-    width: 2px;
-    background: gold;
-    transform: translate(-50%, 100%);
-    pointer-events: none;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 20px;
+  width: 2px;
+  background: gold;
+  transform: translate(-50%, 100%);
+  pointer-events: none;
 }
 
 /* HIDE RADIO */
 [type=radio] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* LABEL STYLES */
 [type=radio] + label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .profile-links {
-    height: 24px;
-    width: 24px;
-    background-size: contain;
+  height: 24px;
+  width: 24px;
+  background-size: contain;
 }
 
 .wowArmory {
-    background: url(https://cdnassets.raider.io/assets/img/wow-icon-a718385c1d75ca9edbb3eed0a5546c30.png);
-    background-size: contain;
+  background: url(https://cdnassets.raider.io/assets/img/wow-icon-a718385c1d75ca9edbb3eed0a5546c30.png);
+  background-size: contain;
 }
 
 .raiderIO {
-    background: url(https://assets.rpglogs.com/img/warcraft/raiderio_square_xl.png);
-    background-size: contain;
+  background: url(https://assets.rpglogs.com/img/warcraft/raiderio_square_xl.png);
+  background-size: contain;
 }
 
 .warcraftLogs {
-    background: url(https://cdnassets.raider.io/assets/img/warcraftlogs-icon-1da8feba74b4d68aa3d428ab7f851275.png);
-    background-size: contain;
+  background: url(https://cdnassets.raider.io/assets/img/warcraftlogs-icon-1da8feba74b4d68aa3d428ab7f851275.png);
+  background-size: contain;
 }
 
 .raidBots {
-    background: url(https://cdnassets.raider.io/assets/img/raidbots-icon-593d58bfc7657abdb83d8bed6e09c7e4.png);
-    background-size: contain;
+  background: url(https://cdnassets.raider.io/assets/img/raidbots-icon-593d58bfc7657abdb83d8bed6e09c7e4.png);
+  background-size: contain;
 }
 
 .guest {
-    border-radius: 50%;
-    background: url(https://wow.zamimg.com/images/wow/icons/large/inv_misc_horsecostume_front.jpg);
-    background-size: contain;
-    height: 84px;
-    width: 84px;
+  border-radius: 50%;
+  background: url(https://wow.zamimg.com/images/wow/icons/large/inv_misc_horsecostume_front.jpg);
+  background-size: contain;
+  height: 84px;
+  width: 84px;
 }
