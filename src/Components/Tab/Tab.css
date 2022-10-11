@@ -5,6 +5,8 @@ ul.tabNav {
     align-items: center;
     justify-content: space-around;
     padding-left: 0;
+    gap: 60px;
+    margin-top: -11px;
 }
 
 ul.tabNav li {
@@ -14,6 +16,15 @@ ul.tabNav li {
     transition: all 0.7s;
     color: gray;
     margin-bottom: 4px;
+    width: 70px;
+}
+
+ul.tabNav li:first-child {
+    text-align: right;
+}
+
+ul.tabNav li:last-child {
+    text-align: left;
 }
 
 ul.tabNav li.active {

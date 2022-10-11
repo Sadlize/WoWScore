@@ -1,8 +1,5 @@
 import React from "react";
-const TabNavigation = (props) => {
-    const id = props?.id
-    const title = props?.title
-    const [activeTab, setActiveTab] = props?.activeTab
+const TabNavigation = ({id, title, activeTab, setActiveTab}) => {
 
     const handleClick = () => {
         setActiveTab(id);
