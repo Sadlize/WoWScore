@@ -1,12 +1,9 @@
 import React from "react"
 import clsx from "clsx"
 
-const TooltipGroup = ({ children, ...props }) => {
-  const position = props?.position
-  const color = props?.color
-
+const TooltipGroup = ({ children, position, color }) => {
   return (
-    <div className={clsx("Tooltip-Group", position)} style={{ color: color }}>
+    <div className={clsx("Tooltip-Group", position)} style={{ color }}>
       {children}
     </div>
   )
