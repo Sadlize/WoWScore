@@ -4,7 +4,7 @@ import TabContent from "./TabContent"
 import "./Tab.css"
 
 const Tab = ({ children, title }) => {
-  const [activeTab, setActiveTab] = useState("0")
+  const [activeTab, setActiveTab] = useState(0)
   const childrenKeys = Object.keys(children)
 
   return (
@@ -13,18 +13,18 @@ const Tab = ({ children, title }) => {
         <span>{title}</span>
       </h2>
       <ul className="tabNav">
-        {childrenKeys.map((key) => (
+        {childrenKeys.map(key => (
           <TabNavigation
             key={key}
             title={children[key].props.title}
-            id={key}
+            id={+key}
             activeTab={activeTab}
             setActiveTab={setActiveTab}
           />
         ))}
       </ul>
-      {childrenKeys.map((key) => (
-        <TabContent key={key} id={key} activeTab={activeTab}>
+      {childrenKeys.map(key => (
+        <TabContent key={key} id={+key} activeTab={activeTab}>
           {children[key]}
         </TabContent>
       ))}

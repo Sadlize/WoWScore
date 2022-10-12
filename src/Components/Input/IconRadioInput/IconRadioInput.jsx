@@ -37,7 +37,7 @@ const IconRadioInput = ({
             id={id + i}
             onChange={() => {
               if (scorePerDungeon[index][week]?.mythic_level >= 2) {
-                setScorePerDungeon((prevState) =>
+                setScorePerDungeon(prevState =>
                   merge({}, prevState, {
                     [index]: {
                       [week]: {

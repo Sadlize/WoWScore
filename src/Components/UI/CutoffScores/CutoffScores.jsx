@@ -5,7 +5,7 @@ import RaiderIO from "../../../API/RaiderIO"
 const CutoffScores = ({ region }) => {
   const [cutoffScore, setCutoffScore] = useState({})
   const [fetchCutoffScore, isCutoffLoading] = useFetching(
-    useCallback(async (region) => {
+    useCallback(async region => {
       const response = await RaiderIO.getCutoff(region)
       setCutoffScore(response)
     }, [])
@@ -21,7 +21,7 @@ const CutoffScores = ({ region }) => {
         <span>
           Cutoff
           <br />
-          scores
+          Scores
         </span>
       </h2>
       <div className="content-block">

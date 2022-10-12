@@ -15,12 +15,12 @@ const ScoreCalculatorInput = ({
   scorePerDungeon,
   setScorePerDungeon,
 }) => {
-  const isDifferent = (value) => {
+  const isDifferent = value => {
     value = value.replace(/\D/g, "")
     return inputValue !== value //true - different  false - same
   }
 
-  const inputNewValue = (event) => {
+  const inputNewValue = event => {
     const value = event.target.value
     if (value.length <= event.target.maxLength) {
       if (isDifferent(value)) {
@@ -35,8 +35,8 @@ const ScoreCalculatorInput = ({
     }
   }
 
-  const changeScorePerDungeon = (values) => {
-    setScorePerDungeon((prevState) =>
+  const changeScorePerDungeon = values => {
+    setScorePerDungeon(prevState =>
       merge({}, prevState, {
         [index]: {
           [week]: values,
@@ -71,11 +71,11 @@ const ScoreCalculatorInput = ({
           <input
             value={`${inputValue}`}
             placeholder={placeholder}
-            onFocus={(e) => {
+            onFocus={e => {
               e.target.placeholder = ""
               if (e.target.value === "0") e.target.value = ""
             }}
-            onBlur={(e) => (e.target.placeholder = placeholder)}
+            onBlur={e => (e.target.placeholder = placeholder)}
             type="text"
             autoComplete="off"
             maxLength="2"
@@ -87,7 +87,7 @@ const ScoreCalculatorInput = ({
               },
               "CalcInput"
             )}
-            onChange={(e) => {
+            onChange={e => {
               inputNewValue(e)
             }}
           />
@@ -113,7 +113,7 @@ const ScoreCalculatorInput = ({
               step={rangeStep}
               value={dungeonTimestamp}
               style={{ width: "300px" }}
-              onChange={(e) => {
+              onChange={e => {
                 if (scorePerDungeon[index][week]?.mythic_level >= 2) {
                   if (+e.target.value >= rangeMin) {
                     changeScorePerDungeon({ num_keystone_upgrades: 0 })
@@ -144,11 +144,11 @@ const ScoreCalculatorInput = ({
       <input
         value={`${inputValue}`}
         placeholder={placeholder}
-        onFocus={(e) => {
+        onFocus={e => {
           e.target.placeholder = ""
           if (e.target.value === "0") e.target.value = ""
         }}
-        onBlur={(e) => (e.target.placeholder = placeholder)}
+        onBlur={e => (e.target.placeholder = placeholder)}
         type="text"
         autoComplete="off"
         maxLength="2"
@@ -160,10 +160,10 @@ const ScoreCalculatorInput = ({
           },
           "CalcInput"
         )}
-        onChange={(e) => {
+        onChange={e => {
           inputNewValue(e)
         }}
-        onContextMenu={(e) => {
+        onContextMenu={e => {
           e.preventDefault()
           setModal(true)
         }}

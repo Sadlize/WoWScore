@@ -7,7 +7,7 @@ const ScoreCalculatorModal = ({ children, visible, setVisible }) => {
       className={clsx("CalcModal", { active: visible === true })}
       onClick={() => setVisible(false)}
     >
-      <div className={"CalcModalContent"} onClick={(e) => e.stopPropagation()}>
+      <div className={"CalcModalContent"} onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>

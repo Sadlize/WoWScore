@@ -36,8 +36,8 @@ const AffixesSchedule = () => {
     12: ["Fortified", "Spiteful", "Necrotic"],
   }
 
-  const weeks = Object.keys(affixesSchedule).filter((item) => item !== "season")
-  weeks.forEach((item) => affixesSchedule[item].push(affixesSchedule.season))
+  const weeks = Object.keys(affixesSchedule).filter(item => item !== "season")
+  weeks.forEach(item => affixesSchedule[item].push(affixesSchedule.season))
 
   useEffect(() => {
     fetchAffixesList()
@@ -53,9 +53,9 @@ const AffixesSchedule = () => {
             {isAffixesListError ? (
               <span>Request error</span>
             ) : (
-              weeks.map((key) => (
+              weeks.map(key => (
                 <div key={key}>
-                  {affixesSchedule[key].map((affix) => (
+                  {affixesSchedule[key].map(affix => (
                     <a
                       key={affixesList[affix]?.name + "_" + key}
                       href={

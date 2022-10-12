@@ -39,7 +39,7 @@ const CurrentAffixes = () => {
         <>
           <p>{currentWeekPeriod}</p>
           <div className="Affixes">
-            {currentAffixes.map((currentAffixes) => (
+            {currentAffixes.map(currentAffixes => (
               <a
                 key={currentAffixes?.id}
                 href={"https://wowhead.com/affix=" + currentAffixes?.id}
@@ -57,7 +57,7 @@ const CurrentAffixes = () => {
               </a>
             ))}
           </div>
-          <p>{currentAffixes.map((item) => item?.name).join(", ")}</p>
+          <p>{currentAffixes.map(item => item?.name).join(", ")}</p>
         </>
       )}
     </div>
