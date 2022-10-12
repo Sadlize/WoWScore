@@ -19,7 +19,7 @@ const ScoreCalculator = () => {
     "UPPR",
   ]
   let dungeonValues = {}
-  currentDungeons.forEach((i) => {
+  currentDungeons.forEach(i => {
     dungeonValues[i] = {
       Best: {
         mythic_level: 0,
@@ -39,11 +39,11 @@ const ScoreCalculator = () => {
   const dungeonWeeks = Object.keys(scorePerDungeon[currentDungeons[0]])
 
   let sumDungeonScoreValues = 0
-  currentDungeons.forEach((item) =>
-    dungeonWeeks.forEach((week) => {
-      week === dungeonWeeks[0]
-        ? (sumDungeonScoreValues += scorePerDungeon[item][week]?.score * 1.5)
-        : (sumDungeonScoreValues += scorePerDungeon[item][week]?.score * 0.5)
+  currentDungeons.forEach(item =>
+    dungeonWeeks.forEach(week => {
+      sumDungeonScoreValues +=
+        scorePerDungeon[item][week]?.score *
+        (week === dungeonWeeks[0] ? 1.5 : 0.5)
     })
   )
   if (sumDungeonScoreValues % 2 !== 0)
@@ -52,17 +52,17 @@ const ScoreCalculator = () => {
   const importInput = useRef(undefined)
   const [playerInfo, setPlayerInfo] = useState({})
   const [fetchImportScore] = useFetching(
-    useCallback(async (importInput) => {
+    useCallback(async importInput => {
       const response = await apiFunctionHandler.getPointsByCharacter(
         "eu",
         "HowlingFjord",
         importInput
       )
-      setScorePerDungeon((prevState) => merge({}, prevState, response))
+      setScorePerDungeon(prevState => merge({}, prevState, response))
     }, [])
   )
   const [fetchPlayerInfo, isPlayerInfoLoading] = useFetching(
-    useCallback(async (importInput) => {
+    useCallback(async importInput => {
       const response = await apiFunctionHandler.getPlayerIcon(
         "eu",
         "HowlingFjord",
@@ -90,10 +90,10 @@ const ScoreCalculator = () => {
           />
         )}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
-        {currentDungeons.map((index) => (
+        {currentDungeons.map(index => (
           <div id={index} key={index} className="dungeon-grid">
             <span>{index}</span>
-            {dungeonWeeks.map((week) => (
+            {dungeonWeeks.map(week => (
               <ScoreCalculatorInput
                 key={index + "" + week}
                 inputValue={scorePerDungeon[index][week]?.mythic_level}
@@ -116,7 +116,7 @@ const ScoreCalculator = () => {
         <input
           ref={importInput}
           placeholder={"YourCharacter-Realm"}
-          onChange={(e) => {
+          onChange={e => {
             importInput.current.value = e.target.value
           }}
         />
