@@ -1,32 +1,35 @@
 
 ul.tabNav {
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding-left: 0;
-    gap: 60px;
-    margin-top: -11px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-left: 0;
+  gap: 60px;
+  margin-top: -5px;
+  margin-bottom: -5px;
 }
 
 ul.tabNav li {
-    list-style: none;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.7s;
-    color: gray;
-    margin-bottom: 4px;
-    width: 70px;
+  list-style: none;
+  text-align: center;
+  cursor: pointer;
+  color: gray;
+  margin-bottom: 4px;
+  width: 70px;
 }
 
+ul.tabNav li:hover {
+  color: #c7c7c7;
+}
 ul.tabNav li:first-child {
-    text-align: right;
+  text-align: right;
 }
 
 ul.tabNav li:last-child {
-    text-align: left;
+  text-align: left;
 }
 
 ul.tabNav li.active {
-    color: #fff;
+  color: #fff;
 }

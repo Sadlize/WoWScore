@@ -100,10 +100,11 @@ body {
   position: relative;
   background: #2e2e2e;
   border-radius: 4px;
-  padding: 10px;
+  padding: 16px;
   vertical-align: top;
   min-width: 300px;
   border: 1px solid #424242;
+  margin-top: 10px;
 }
 
 .Affixes {
@@ -116,7 +117,8 @@ body {
 }
 
 .Affixes a img {
-  border-radius: 5%;
+  border: 2px solid #181610;
+  border-radius: 8%;
 }
 
 .grayscale100 {

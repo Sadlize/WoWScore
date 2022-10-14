@@ -1,5 +1,5 @@
 .CalcScore {
-  margin: 0;
+  margin: 8px 0 24px 0;
   font-size: 2em;
 }
 
@@ -7,24 +7,25 @@
   position: relative;
   display: inline-grid;
   justify-items: center;
-  padding: 0 2px;
+  padding: 0 4px;
 }
 
 .dungeon-grid span {
-  font-weight: bold;
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
 .CalcInput {
   width: 56px;
   height: 56px;
   padding: 0;
-  border-width: 0;
   color: #f6714a;
   text-align: center;
   font-size: 150%;
   transition-duration: 2s;
   font-weight: 900;
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+  border: 2px solid #181610;
+  border-radius: 8%;
 }
 
 .CalcModal {
@@ -125,4 +126,45 @@
   background-size: contain;
   height: 84px;
   width: 84px;
+}
+
+.importSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto 0;
+}
+
+.importInput {
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  display: block;
+  height: 40px;
+  margin: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  background-color: rgb(102, 102, 106);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.19);
+  border-radius: 5px;
+  min-width: 200px;
+  width: 16.6667%;
+}
+
+.importInput::placeholder {
+  opacity: .5;
+  color: #e1e1e1;
+}
+
+.importDropDown {
+  appearance: none;
+  background: rgb(102, 102, 106) url('../../Input/chevron-down.svg') no-repeat right 5% top 50%;
+}
+
+.importRegion {
+  min-width: 55px;
+  width: 8.33333%;
+
 }
