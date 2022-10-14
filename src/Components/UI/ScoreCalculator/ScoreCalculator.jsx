@@ -107,30 +107,36 @@ const ScoreCalculator = () => {
           </div>
         ))}
         <h2 className="content-heading">
-          <span>
-            or
-            <br />
-            Import
-          </span>
+          <span>Import Section</span>
         </h2>
-        <input
-          ref={importInput}
-          placeholder={"YourCharacter-Realm"}
-          onChange={e => {
-            importInput.current.value = e.target.value
-          }}
-        />
-        <select>
-          <option>eu</option>
-        </select>
-        <button
-          onClick={() => {
-            fetchPlayerInfo(importInput.current.value)
-            fetchImportScore(importInput.current.value)
-          }}
-        >
-          Import
-        </button>
+        <div className={"importSection"}>
+          <select className={"importInput importDropDown importRegion"}>
+            <option>us</option>
+            <option>eu</option>
+            <option>kr</option>
+            <option>tw</option>
+          </select>
+          <input
+            ref={importInput}
+            className={"importInput"}
+            placeholder={"Character Name"}
+            onChange={e => {
+              importInput.current.value = e.target.value
+            }}
+          />
+          <input
+            className={"importInput importDropDown"}
+            placeholder={"Realm"}
+          />
+          <button
+            onClick={() => {
+              fetchPlayerInfo(importInput.current.value)
+              fetchImportScore(importInput.current.value)
+            }}
+          >
+            Import
+          </button>
+        </div>
       </div>
     </div>
   )
