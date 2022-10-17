@@ -40,7 +40,7 @@
 }
 
 body {
-  background: #181610;
+  background: #1b1b1b;
   font-family: lato, sans-serif;
   color: #fff;
 }
@@ -98,12 +98,12 @@ body {
 
 .content-block {
   position: relative;
-  background: #2e2e2e;
+  background: #424242;
   border-radius: 4px;
   padding: 16px;
   vertical-align: top;
   min-width: 300px;
-  border: 1px solid #424242;
+  border: 1px solid #6d6d6d;
   margin-top: 10px;
 }
 
