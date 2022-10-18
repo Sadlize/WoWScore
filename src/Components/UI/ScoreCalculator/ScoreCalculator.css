@@ -144,10 +144,9 @@
   padding-left: 10px;
   padding-right: 10px;
   color: white;
-  background-color: rgb(102, 102, 106);
+  background-color: #6d6d6d;
   border-width: 1px;
   border-style: solid;
-  border-color: rgba(255, 255, 255, 0.19);
   border-radius: 5px;
   min-width: 200px;
   width: 16.6667%;
@@ -160,7 +159,7 @@
 
 .importDropDown {
   appearance: none;
-  background: rgb(102, 102, 106) url('../../Input/chevron-down.svg') no-repeat right 5% top 50%;
+  background: #6d6d6d url('../../Input/chevron-down.svg') no-repeat right 5% top 50%;
 }
 
 .importRegion {
