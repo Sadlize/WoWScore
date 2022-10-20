@@ -81,7 +81,7 @@ const ScoreCalculator = () => {
           Calculator
         </span>
       </h2>
-      <div className="content-block">
+      <div className="content-block scoreCalculator">
         <ScoreCalculatorTooltips />
         {playerInfo?.data && (
           <ScoreCalculatorLinks
@@ -90,22 +90,24 @@ const ScoreCalculator = () => {
           />
         )}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
-        {currentDungeons.map(index => (
-          <div id={index} key={index} className="dungeon-grid">
-            <span>{index}</span>
-            {dungeonWeeks.map(week => (
-              <ScoreCalculatorInput
-                key={index + "" + week}
-                inputValue={scorePerDungeon[index][week]?.mythic_level}
-                week={week}
-                index={index}
-                placeholder={"0"}
-                scorePerDungeon={scorePerDungeon}
-                setScorePerDungeon={setScorePerDungeon}
-              />
-            ))}
-          </div>
-        ))}
+        <div>
+          {currentDungeons.map(index => (
+            <div id={index} key={index} className="dungeon-grid">
+              <span>{index}</span>
+              {dungeonWeeks.map(week => (
+                <ScoreCalculatorInput
+                  key={index + "" + week}
+                  inputValue={scorePerDungeon[index][week]?.mythic_level}
+                  week={week}
+                  index={index}
+                  placeholder={"0"}
+                  scorePerDungeon={scorePerDungeon}
+                  setScorePerDungeon={setScorePerDungeon}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
         <h2 className="content-heading">
           <span>Import Section</span>
         </h2>

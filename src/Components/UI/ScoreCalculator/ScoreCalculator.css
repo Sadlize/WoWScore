@@ -1,3 +1,8 @@
+.scoreCalculator {
+  justify-content: normal;
+  align-items: normal;
+}
+
 .CalcScore {
   margin: 8px 0 24px 0;
   font-size: 2em;

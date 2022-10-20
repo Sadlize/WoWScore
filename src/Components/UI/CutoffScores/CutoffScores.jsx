@@ -29,10 +29,10 @@ const CutoffScores = ({ region }) => {
           <h1>Loading cutoffs...</h1>
         ) : (
           <>
-            <p>US: {cutoffScore.US} </p>
-            <p>EU: {cutoffScore.EU}</p>
-            <p>TW: {cutoffScore.TW}</p>
-            <p>KR: {cutoffScore.KR}</p>
+            <span>US: {cutoffScore.US}</span>
+            <span>EU: {cutoffScore.EU}</span>
+            <span>TW: {cutoffScore.TW}</span>
+            <span>KR: {cutoffScore.KR}</span>
           </>
         )}
       </div>
