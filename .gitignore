@@ -13,8 +13,6 @@
 /build
 
 # misc
-.editorconfig
-.prettierrc
 .DS_Store
 .env.local
 .env.development.local
