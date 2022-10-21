@@ -1,7 +1,7 @@
 import React from "react"
 import clsx from "clsx"
 import merge from "lodash/merge"
-import { calcPointsForKeyLevel } from "../../../utils/calculatorFunctionHandler"
+import { calcPointsForKeyLevel } from "utils/calculatorFunctionHandler"
 
 const IconRadioInput = ({
   count,

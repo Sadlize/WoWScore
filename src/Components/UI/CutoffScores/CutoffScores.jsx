@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react"
-import { useFetching } from "../../../hooks/useFetching"
-import RaiderIO from "../../../API/RaiderIO"
+import { useFetching } from "hooks/useFetching"
+import RaiderIO from "API/RaiderIO"
 
 const CutoffScores = ({ region }) => {
   const [cutoffScore, setCutoffScore] = useState({})

@@ -1,7 +1,7 @@
 import React from "react"
 import { useCallback, useEffect, useState } from "react"
-import { useFetching } from "../../../hooks/useFetching"
-import BattleNet from "../../../API/BattleNet"
+import { useFetching } from "hooks/useFetching"
+import BattleNet from "API/BattleNet"
 
 const AffixesSchedule = () => {
   /**

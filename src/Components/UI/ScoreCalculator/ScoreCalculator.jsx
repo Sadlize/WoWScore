@@ -1,12 +1,11 @@
 import React, { useCallback, useRef, useState } from "react"
 import ScoreCalculatorInput from "./ScoreCalculatorInput"
 import "./ScoreCalculator.css"
-import apiFunctionHandler from "../../../utils/apiFunctionHandler"
-
+import apiFunctionHandler from "utils/apiFunctionHandler"
 import merge from "lodash/merge"
 import ScoreCalculatorLinks from "./ScoreCalculatorLinks"
 import ScoreCalculatorTooltips from "./ScoreCalculatorTooltips"
-import { useFetching } from "../../../hooks/useFetching"
+import { useFetching } from "hooks/useFetching"
 
 const ScoreCalculator = () => {
   const currentDungeons = [

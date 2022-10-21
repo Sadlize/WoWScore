@@ -1,7 +1,7 @@
 import React, { useCallback } from "react"
 import { useEffect, useState } from "react"
-import { useFetching } from "../../../hooks/useFetching"
-import RaiderIO from "../../../API/RaiderIO"
+import { useFetching } from "hooks/useFetching"
+import RaiderIO from "API/RaiderIO"
 
 const CurrentAffixes = () => {
   /**
