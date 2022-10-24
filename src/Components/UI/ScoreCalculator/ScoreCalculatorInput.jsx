@@ -3,7 +3,7 @@ import clsx from "clsx"
 import ScoreCalculatorModal from "./ScoreCalculatorModal"
 import { AiFillStar } from "react-icons/ai"
 import merge from "lodash/merge"
-import { calcPointsForKeyLevel } from "../../../utils/calculatorFunctionHandler"
+import { calcPointsForKeyLevel } from "utils/calculatorFunctionHandler"
 import IconRadioInput from "../../Input/IconRadioInput/IconRadioInput"
 import UpgradeStars from "./UpgradeStars"
 
@@ -27,9 +27,9 @@ const ScoreCalculatorInput = ({
         if (!isNaN(value))
           changeScorePerDungeon({
             mythic_level: +value,
-            score: calcPointsForKeyLevel(+value, dungeonTimestamp, rangeMax),
+            score: calcPointsForKeyLevel(+value, 0, rangeMax),
             num_keystone_upgrades: 1,
-            clear_time_ms: 0,
+            clear_time_ms: keyMaxTimestamp[index],
           })
       }
     }
@@ -58,7 +58,8 @@ const ScoreCalculatorInput = ({
     YARD: 2280999,
   }
   const clear_time_ms = scorePerDungeon[index][week]?.clear_time_ms
-  const dungeonTimestamp = clear_time_ms === undefined ? 0 : clear_time_ms
+  const dungeonTimestamp =
+    clear_time_ms === undefined ? 0 : keyMaxTimestamp[index] - clear_time_ms
   const rangeMax = Math.round(keyMaxTimestamp[index] * 0.4)
   const rangeMin = rangeMax * -1
   const rangeStep = rangeMax * 0.02
@@ -128,7 +129,7 @@ const ScoreCalculatorInput = ({
                     changeScorePerDungeon({ num_keystone_upgrades: 3 })
                   }
                   changeScorePerDungeon({
-                    clear_time_ms: +e.target.value,
+                    clear_time_ms: keyMaxTimestamp[index] - +e.target.value,
                     score: calcPointsForKeyLevel(
                       scorePerDungeon[index][week]?.mythic_level,
                       +e.target.value,
