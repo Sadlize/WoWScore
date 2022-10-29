@@ -112,7 +112,7 @@ const ScoreCalculator = () => {
           <span>Import Section</span>
         </h2>
         <div className={"importSection"}>
-          <select className={"importInput importDropDown importRegion"}>
+          <select className={"importDropDown importRegion"}>
             <option>us</option>
             <option>eu</option>
             <option>kr</option>
@@ -131,6 +131,7 @@ const ScoreCalculator = () => {
             placeholder={"Realm"}
           />
           <button
+            className={"importButton"}
             onClick={() => {
               fetchPlayerInfo(importInput.current.value)
               fetchImportScore(importInput.current.value)
