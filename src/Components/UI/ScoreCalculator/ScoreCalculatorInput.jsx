@@ -102,7 +102,12 @@ const ScoreCalculatorInput = ({
                 index={index}
                 week={week}
                 currentOption={radioOption}
-                dungeonTimestamp={[rangeMin, 0, rangeMax / 2, rangeMax]}
+                dungeonStarTimers={[
+                  keyMaxTimestamp[index] - rangeMin,
+                  keyMaxTimestamp[index],
+                  keyMaxTimestamp[index] - rangeMax / 2,
+                  keyMaxTimestamp[index] - rangeMax,
+                ]}
                 scorePerDungeon={scorePerDungeon}
                 setScorePerDungeon={setScorePerDungeon}
               />

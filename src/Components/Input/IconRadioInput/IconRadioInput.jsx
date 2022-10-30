@@ -11,7 +11,7 @@ const IconRadioInput = ({
   index,
   week,
   currentOption,
-  dungeonTimestamp,
+  dungeonStarTimers,
   scorePerDungeon,
   setScorePerDungeon,
 }) => {
@@ -42,11 +42,11 @@ const IconRadioInput = ({
                     [index]: {
                       [week]: {
                         num_keystone_upgrades: i,
-                        clear_time_ms: dungeonTimestamp[i],
+                        clear_time_ms: dungeonStarTimers[i],
                         score: calcPointsForKeyLevel(
                           scorePerDungeon[index][week]?.mythic_level,
-                          dungeonTimestamp[i],
-                          dungeonTimestamp[3]
+                          dungeonStarTimers[i],
+                          dungeonStarTimers[3]
                         ),
                       },
                     },
