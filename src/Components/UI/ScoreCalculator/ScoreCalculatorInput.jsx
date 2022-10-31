@@ -10,7 +10,7 @@ import UpgradeStars from "./UpgradeStars"
 const ScoreCalculatorInput = ({
   week,
   index,
-  inputValue,
+  inputValue = "",
   placeholder,
   scorePerDungeon,
   setScorePerDungeon,

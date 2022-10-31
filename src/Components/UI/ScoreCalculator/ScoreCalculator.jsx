@@ -22,13 +22,11 @@ const ScoreCalculator = () => {
   currentDungeons.forEach(i => {
     dungeonValues[i] = {
       Best: {
-        mythic_level: 0,
         num_keystone_upgrades: 1,
         score: 0,
         par_time_ms: 0,
       },
       Alternate: {
-        mythic_level: 0,
         num_keystone_upgrades: 1,
         score: 0,
         par_time_ms: 0,
