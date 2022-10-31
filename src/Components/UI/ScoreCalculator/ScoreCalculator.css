@@ -28,12 +28,12 @@
   width: 56px;
   height: 56px;
   padding: 0;
-  color: #f6714a;
+  color: #fff;
   text-align: center;
   font-size: 150%;
   transition-duration: 2s;
   font-weight: 900;
-  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+  text-shadow: -1px -1px 4px #000, 1px -1px 4px #000, -1px 1px 4px #000, 1px 1px 4px #000;
   border: 2px solid #181610;
   border-radius: 8%;
 }
@@ -180,6 +180,7 @@
   padding: 0 10px;
   color: white;
   font-size: inherit;
+  border-radius: 5px;
 }
 
 .importButton{
