@@ -6,7 +6,6 @@
 .CalcScore {
   margin: 16px auto 16px auto;
   font-size: 2em;
-  border-radius: 0.2rem;
   font-weight: 700;
   border: 2px solid #666;
   padding: 4px 8px;
@@ -34,7 +33,7 @@
   font-weight: 900;
   text-shadow: -1px -1px 4px #000, 1px -1px 4px #000, -1px 1px 4px #000, 1px 1px 4px #000;
   border: 2px solid #181610;
-  border-radius: 8%;
+  background-size: cover;
 }
 
 .CalcModal {
@@ -51,7 +50,6 @@
 .CalcModalContent {
   padding: 32px;
   background: #2e2e2e;
-  border-radius: 16px;
 }
 
 .CalcModal.active {
@@ -145,7 +143,7 @@
   margin-top: 10px;
 }
 
-.importInput {
+.importSection input {
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
@@ -156,30 +154,28 @@
   background-color: #6d6d6d;
   border-width: 1px;
   border-style: solid;
-  border-radius: 5px;
   min-width: 165px;
   width: 30%;
 }
 
-.importInput::placeholder {
+.importSection input::placeholder {
   opacity: .5;
   color: #e1e1e1;
 }
 
-.importDropDown {
+.dropDown {
   appearance: none;
   background: #6d6d6d url('../../Input/chevron-down.svg') no-repeat right 5% top 50%;
 }
 
-.importRegion {
+.region {
   min-width: 50px;
   width: 10%;
   padding: 0 10px;
   color: inherit;
   font-size: inherit;
-  border-radius: 5px;
 }
 
-.importButton{
+.importSection button{
   width: 20%;
 }

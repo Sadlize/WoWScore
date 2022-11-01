@@ -37,7 +37,6 @@
 .Tooltip-Tip {
   position: absolute;
   border: 1px solid var(--tooltip-border-color);
-  border-radius: 4px;
   left: 50%;
   transform: translateX(-50%);
   padding: 6px;
