@@ -17,7 +17,7 @@
   position: relative;
   display: inline-grid;
   justify-items: center;
-  padding: 0 4px;
+  margin: 0 4px;
 }
 
 .dungeon-grid span {
@@ -27,8 +27,7 @@
 .CalcInput {
   width: 56px;
   height: 56px;
-  padding: 0;
-  color: #fff;
+  color: inherit;
   text-align: center;
   font-size: 150%;
   transition-duration: 2s;
@@ -50,10 +49,9 @@
 }
 
 .CalcModalContent {
-  padding: 25px;
+  padding: 32px;
   background: #2e2e2e;
   border-radius: 16px;
-  min-width: 250px;
 }
 
 .CalcModal.active {
@@ -151,11 +149,10 @@
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
   display: block;
   height: 40px;
-  margin: 0;
   padding: 0 10px;
-  color: white;
   background-color: #6d6d6d;
   border-width: 1px;
   border-style: solid;
@@ -178,12 +175,11 @@
   min-width: 50px;
   width: 10%;
   padding: 0 10px;
-  color: white;
+  color: inherit;
   font-size: inherit;
   border-radius: 5px;
 }
 
 .importButton{
-  padding: 0;
   width: 20%;
 }
