@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import React, { useCallback, useRef, useState } from "react"
 import ScoreCalculatorInput from "./ScoreCalculatorInput"
 import "./ScoreCalculator.css"
@@ -47,12 +48,14 @@ const ScoreCalculator = () => {
   if (sumDungeonScoreValues % 2 !== 0)
     sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
 
-  const importInput = useRef(undefined)
+  const importCharacterName = useRef(undefined)
+  const importCharacterRegion = useRef(undefined)
+
   const [playerInfo, setPlayerInfo] = useState({})
-  const [fetchImportScore] = useFetching(
-    useCallback(async importInput => {
+  const [fetchImportScore, isImportScoreLoading] = useFetching(
+    useCallback(async (region, importInput) => {
       const response = await apiFunctionHandler.getPointsByCharacter(
-        "eu",
+        region,
         "HowlingFjord",
         importInput
       )
@@ -60,16 +63,15 @@ const ScoreCalculator = () => {
     }, [])
   )
   const [fetchPlayerInfo, isPlayerInfoLoading] = useFetching(
-    useCallback(async importInput => {
+    useCallback(async (region, importInput) => {
       const response = await apiFunctionHandler.getPlayerIcon(
-        "eu",
+        region,
         "HowlingFjord",
         importInput
       )
       setPlayerInfo(response)
     }, [])
   )
-
   return (
     <div>
       <h2 className="content-heading">
@@ -81,12 +83,12 @@ const ScoreCalculator = () => {
       </h2>
       <div className="content-block scoreCalculator">
         <ScoreCalculatorTooltips />
-        {playerInfo?.data && (
+        {playerInfo?.data ? (
           <ScoreCalculatorLinks
             playerInfo={playerInfo}
             isPlayerInfoLoading={isPlayerInfoLoading}
           />
-        )}
+        ) : null}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
         <div>
           {currentDungeons.map(index => (
@@ -110,24 +112,39 @@ const ScoreCalculator = () => {
           <span>Import Section</span>
         </h2>
         <div className={"importSection"}>
-          <select className={"dropDown region"}>
+          <select
+            className={"dropDown region"}
+            ref={importCharacterRegion}
+            onChange={e => {
+              importCharacterRegion.current.value = e.target.value
+            }}
+          >
             <option>us</option>
             <option>eu</option>
             <option>kr</option>
             <option>tw</option>
           </select>
           <input
-            ref={importInput}
+            ref={importCharacterName}
             placeholder={"Character Name"}
             onChange={e => {
-              importInput.current.value = e.target.value
+              importCharacterName.current.value = e.target.value
             }}
           />
           <input placeholder={"Realm"} />
           <button
+            className={clsx({
+              buttonLoading: isImportScoreLoading || isPlayerInfoLoading,
+            })}
             onClick={() => {
-              fetchPlayerInfo(importInput.current.value)
-              fetchImportScore(importInput.current.value)
+              fetchPlayerInfo(
+                importCharacterRegion.current.value,
+                importCharacterName.current.value
+              )
+              fetchImportScore(
+                importCharacterRegion.current.value,
+                importCharacterName.current.value
+              )
             }}
           >
             Import
