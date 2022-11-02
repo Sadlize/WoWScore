@@ -7,6 +7,7 @@ ul.tabNav {
 }
 
 ul.tabNav li {
+  position: relative;
   list-style: none;
   text-align: center;
   cursor: pointer;
@@ -15,17 +16,39 @@ ul.tabNav li {
   width: 70px;
 }
 
+ul.tabNav li:after {
+  width: 100%;
+  left: 0;
+}
+
 ul.tabNav li:hover {
   color: #c7c7c7;
 }
-ul.tabNav li:first-child {
+
+/*ul.tabNav li:first-child {
   text-align: right;
 }
 
 ul.tabNav li:last-child {
   text-align: left;
-}
+}*/
 
 ul.tabNav li.active {
   color: inherit;
+}
+
+ul.tabNav li::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 5px;
+  left: 50%;
+  bottom:-5px;
+  background-color: white;
+  transition: all ease-in-out .2s;
+}
+
+ul.tabNav li.active::after{
+  width: 100%;
+  left: 0;
 }
