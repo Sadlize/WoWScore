@@ -1,6 +1,6 @@
 import React from "react"
 
-const ScoreCalculatorLinks = ({ playerInfo, isPlayerInfoLoading }) => {
+const ScoreCalculatorLinks = ({ playerInfo, isPlayerDataLoading }) => {
   return (
     <div className={"profile-links"}>
       <a
@@ -21,7 +21,7 @@ const ScoreCalculatorLinks = ({ playerInfo, isPlayerInfoLoading }) => {
       >
         {" "}
       </a>
-      {!isPlayerInfoLoading && (
+      {!isPlayerDataLoading && (
         <img
           src={playerInfo?.data?.thumbnail_url}
           className="guest"

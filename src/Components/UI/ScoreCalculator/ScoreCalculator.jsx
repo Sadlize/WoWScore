@@ -52,26 +52,24 @@ const ScoreCalculator = () => {
   const importCharacterRegion = useRef(undefined)
 
   const [playerInfo, setPlayerInfo] = useState({})
-  const [fetchImportScore, isImportScoreLoading] = useFetching(
-    useCallback(async (region, importInput) => {
-      const response = await apiFunctionHandler.getPointsByCharacter(
+  const [fetchPlayerData, isPlayerDataLoading] = useFetching(
+    useCallback(async (region, name) => {
+      let response = await apiFunctionHandler.getPointsByCharacter(
         region,
         "HowlingFjord",
-        importInput
+        name
       )
       setScorePerDungeon(prevState => merge({}, prevState, response))
-    }, [])
-  )
-  const [fetchPlayerInfo, isPlayerInfoLoading] = useFetching(
-    useCallback(async (region, importInput) => {
-      const response = await apiFunctionHandler.getPlayerIcon(
+
+      response = await apiFunctionHandler.getPlayerIcon(
         region,
         "HowlingFjord",
-        importInput
+        name
       )
       setPlayerInfo(response)
     }, [])
   )
+  console.log(importCharacterName)
   return (
     <div>
       <h2 className="content-heading">
@@ -86,7 +84,7 @@ const ScoreCalculator = () => {
         {playerInfo?.data ? (
           <ScoreCalculatorLinks
             playerInfo={playerInfo}
-            isPlayerInfoLoading={isPlayerInfoLoading}
+            isPlayerDataLoading={isPlayerDataLoading}
           />
         ) : null}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
@@ -111,7 +109,7 @@ const ScoreCalculator = () => {
         <h2 className="content-heading">
           <span>Import Section</span>
         </h2>
-        <div className={"importSection"}>
+        <form className={"importSection"}>
           <select
             className={"dropDown region"}
             ref={importCharacterRegion}
@@ -130,18 +128,16 @@ const ScoreCalculator = () => {
             onChange={e => {
               importCharacterName.current.value = e.target.value
             }}
+            required
           />
-          <input placeholder={"Realm"} />
+          <input placeholder={"Realm"} required />
           <button
+            type={"submit"}
             className={clsx({
-              buttonLoading: isImportScoreLoading || isPlayerInfoLoading,
+              buttonLoading: isPlayerDataLoading,
             })}
             onClick={() => {
-              fetchPlayerInfo(
-                importCharacterRegion.current.value,
-                importCharacterName.current.value
-              )
-              fetchImportScore(
+              fetchPlayerData(
                 importCharacterRegion.current.value,
                 importCharacterName.current.value
               )
@@ -149,7 +145,7 @@ const ScoreCalculator = () => {
           >
             Import
           </button>
-        </div>
+        </form>
       </div>
     </div>
   )
