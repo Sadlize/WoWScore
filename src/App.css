@@ -19,9 +19,14 @@ button {
   background-color: #0dd97a;
 }
 
-button:hover, button:focus {
+button:hover:enabled, button:focus:enabled {
   background-color: #00a64c;
 }
+
+button:disabled, button:disabled {
+  cursor: not-allowed;
+}
+
 .Affixes a img {
   border: 2px solid #181610;
 }
