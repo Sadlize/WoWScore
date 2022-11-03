@@ -23,6 +23,14 @@
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
+.dungeon-grid > div:last-child {
+  margin-top: 16px;
+}
+
+.dungeon {
+  position: relative;
+}
+
 .CalcInput {
   width: 56px;
   height: 56px;
@@ -58,8 +66,12 @@
   align-items: center;
 }
 
-.UpgradeStars {
-  height: 20px;
+.upgradeStars {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
 }
 
 .StarTimestamp {

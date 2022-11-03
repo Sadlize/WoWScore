@@ -65,7 +65,7 @@ const ScoreCalculatorInput = ({
   const rangeStep = rangeMax * 0.02
 
   return (
-    <>
+    <div className={"dungeon"}>
       <ScoreCalculatorModal visible={modal} setVisible={setModal}>
         <div className="dungeon-grid">
           <h2 className={"content-heading"}>{index + " " + week}</h2>
@@ -177,7 +177,7 @@ const ScoreCalculatorInput = ({
       <UpgradeStars
         upgrade={scorePerDungeon[index][week]?.num_keystone_upgrades}
       />
-    </>
+    </div>
   )
 }
 
