@@ -12,6 +12,11 @@
   box-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
+.dungeon-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
 .dungeon-grid {
   position: relative;
   display: inline-grid;
@@ -23,7 +28,14 @@
   text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
-.dungeon-grid > div:last-child {
+.dungeon-grid img {
+  width: 56px;
+  height: 56px;
+  border: 2px solid #181610;
+  box-sizing: border-box;
+}
+
+.dungeon-grid > div:last-child, img:last-child {
   margin-top: 16px;
 }
 
@@ -42,6 +54,7 @@
   text-shadow: -1px -1px 4px #000, 1px -1px 4px #000, -1px 1px 4px #000, 1px 1px 4px #000;
   border: 2px solid #181610;
   background-size: cover;
+  box-sizing: border-box;
 }
 
 .CalcModal {

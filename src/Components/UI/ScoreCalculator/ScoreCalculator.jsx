@@ -65,7 +65,17 @@ const ScoreCalculator = () => {
           />
         ) : null}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
-        <div>
+        <div className={"dungeon-wrapper"}>
+          <div className="dungeon-grid">
+            <img
+              src={require("../../../images/affixes/tyrannical.jpg")}
+              alt={"Tyrannical"}
+            />
+            <img
+              src={require("../../../images/affixes/fortified.jpg")}
+              alt={"Fortified"}
+            />
+          </div>
           {currentDungeons.map(index => (
             <div id={index} key={index} className="dungeon-grid">
               <span>{index}</span>
