@@ -19,12 +19,12 @@ const ScoreCalculator = () => {
   let dungeonValues = {}
   currentDungeons.forEach(i => {
     dungeonValues[i] = {
-      Best: {
+      Tyrannical: {
         num_keystone_upgrades: 1,
         score: 0,
         par_time_ms: 0,
       },
-      Alternate: {
+      Fortified: {
         num_keystone_upgrades: 1,
         score: 0,
         par_time_ms: 0,
@@ -35,13 +35,16 @@ const ScoreCalculator = () => {
   const dungeonWeeks = Object.keys(scorePerDungeon[currentDungeons[0]])
 
   let sumDungeonScoreValues = 0
-  currentDungeons.forEach(item =>
-    dungeonWeeks.forEach(week => {
-      sumDungeonScoreValues +=
-        scorePerDungeon[item][week]?.score *
-        (week === dungeonWeeks[0] ? 1.5 : 0.5)
-    })
+  currentDungeons.forEach(
+    item =>
+      (sumDungeonScoreValues += [
+        scorePerDungeon[item]?.Tyrannical?.score,
+        scorePerDungeon[item]?.Fortified?.score,
+      ]
+        .sort((a, b) => b - a)
+        .reduce((a, b) => a * 1.5 + b * 0.5))
   )
+
   if (sumDungeonScoreValues % 2 !== 0)
     sumDungeonScoreValues = sumDungeonScoreValues.toFixed(2)
 
@@ -59,10 +62,7 @@ const ScoreCalculator = () => {
       <div className="content-block scoreCalculator">
         <ScoreCalculatorTooltips />
         {playerInfo?.data ? (
-          <ScoreCalculatorLinks
-            playerInfo={playerInfo}
-            //isPlayerDataLoading={isPlayerDataLoading}
-          />
+          <ScoreCalculatorLinks playerInfo={playerInfo} />
         ) : null}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
         <div className={"dungeon-wrapper"}>

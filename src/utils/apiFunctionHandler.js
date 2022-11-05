@@ -8,7 +8,7 @@ export default class apiFunctionHandler {
     let bestScores = {}
     bestRuns.forEach(i => {
       bestScores[i.short_name] = {
-        Best: {
+        [i?.affixes[0]?.name]: {
           mythic_level: i.mythic_level,
           num_keystone_upgrades: i.num_keystone_upgrades,
           score: i.score,
@@ -23,7 +23,7 @@ export default class apiFunctionHandler {
     let altScores = {}
     altRuns.forEach(i => {
       altScores[i.short_name] = {
-        Alternate: {
+        [i?.affixes[0]?.name]: {
           mythic_level: i.mythic_level,
           num_keystone_upgrades: i.num_keystone_upgrades,
           score: i.score,
