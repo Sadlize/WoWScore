@@ -1,8 +1,8 @@
+@import "resetStyles.css";
+
 * {
   border-radius: 8px;
 }
-
-@import "resetStyles.css";
 
 body {
   background: #1b1b1b;
@@ -14,6 +14,7 @@ button {
   font-weight: 700;
   cursor: pointer;
   border: 0;
+  line-height: 0;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   background-color: #0dd97a;
@@ -83,15 +84,11 @@ button:disabled, button:disabled {
 }
 
 .content-heading {
-  pointer-events: none;
-  position: relative;
-  overflow: hidden;
-  white-space: nowrap;
-  text-align: center;
   letter-spacing: .05em;
   margin: 8px 0;
   font: 1.5em/1 Georgia;
   text-shadow: 0 1px rgba(255, 255, 255, .6);
+  border-radius: 0;
 }
 
 .content-heading:after {
@@ -114,6 +111,8 @@ button:disabled, button:disabled {
   width: 30%;
   height: 1px;
   vertical-align: middle;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .grayscale0 {
@@ -125,34 +124,34 @@ button:disabled, button:disabled {
   color: #757575!important;
 }
 
-#STRT input[type=text] {
+.STRT input[type=text] {
   background-image: url(images/dungeons/tazavesh-streets-of-wonder.jpg);
 }
 
-#GD input[type=text] {
+.GD input[type=text] {
   background-image: url(images/dungeons/grimrail-depot.jpg);
 }
 
-#GMBT input[type=text] {
+.GMBT input[type=text] {
   background-image: url(images/dungeons/tazavesh-soleahs-gambit.jpg);
 }
 
-#ID input[type=text] {
+.ID input[type=text] {
   background-image: url(images/dungeons/iron-docks.jpg);
 }
 
-#LOWR input[type=text] {
+.LOWR input[type=text] {
   background-image: url(images/dungeons/return-to-karazhan-lower.jpg);
 }
 
-#UPPR input[type=text] {
+.UPPR input[type=text] {
   background-image: url(images/dungeons/return-to-karazhan-upper.jpg);
 }
 
-#WORK input[type=text] {
+.WORK input[type=text] {
   background-image: url(images/dungeons/operation-mechagon-workshop.jpg);
 }
 
-#YARD input[type=text] {
+.YARD input[type=text] {
   background-image: url(images/dungeons/operation-mechagon-junkyard.jpg);
 }

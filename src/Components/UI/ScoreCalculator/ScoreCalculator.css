@@ -12,35 +12,68 @@
   box-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
-.dungeon-wrapper {
+.dungeons-wrapper {
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
 }
 
-.dungeon-grid {
+.week-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 16px auto;
+  gap: 8px;
+}
+
+.modal-grid {
   position: relative;
   display: inline-grid;
   justify-items: center;
   margin: 0 4px;
 }
 
-.dungeon-grid span {
-  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
-}
-
-.dungeon-grid img {
-  width: 56px;
-  height: 56px;
-  border: 2px solid #181610;
-  box-sizing: border-box;
-}
-
-.dungeon-grid > div:last-child, img:last-child {
-  margin-top: 16px;
+.dungeon-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }
 
 .dungeon {
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
+
+.week-heading {
+  text-align: left;
+  overflow: hidden;
+  line-height: 0;
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.week-heading:before {
+  left: 0;
+  width: 28px;
+  height: 28px;
+  margin: 0;
+  border-radius: 8px;
+  border: 2px solid black
+}
+
+.week-heading:after {
+  left: 0;
+  background: #6d6d6d;
+  width: 100%;
+}
+
+.tyrannical:before {
+  background-image:url('../../../images/affixes/tyrannical.jpg');
+}
+
+.fortified:before {
+  background-image:url('../../../images/affixes/fortified.jpg');
 }
 
 .CalcInput {
@@ -164,6 +197,7 @@
 
 .importSection {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   margin-top: 10px;
 }

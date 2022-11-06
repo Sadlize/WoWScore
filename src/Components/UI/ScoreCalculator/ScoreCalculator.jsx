@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import ScoreCalculatorImportSection from "Components/UI/ScoreCalculator/ScoreCalculatorImportSection"
 import React, { useState } from "react"
 import "./ScoreCalculator.css"
@@ -65,31 +66,30 @@ const ScoreCalculator = () => {
           <ScoreCalculatorLinks playerInfo={playerInfo} />
         ) : null}
         <p className="CalcScore">{sumDungeonScoreValues}</p>
-        <div className={"dungeon-wrapper"}>
-          <div className="dungeon-grid">
-            <img
-              src={require("../../../images/affixes/tyrannical.jpg")}
-              alt={"Tyrannical"}
-            />
-            <img
-              src={require("../../../images/affixes/fortified.jpg")}
-              alt={"Fortified"}
-            />
-          </div>
-          {currentDungeons.map(index => (
-            <div id={index} key={index} className="dungeon-grid">
-              <span>{index}</span>
-              {dungeonWeeks.map(week => (
-                <ScoreCalculatorInput
-                  key={index + "" + week}
-                  inputValue={scorePerDungeon[index][week]?.mythic_level}
-                  week={week}
-                  index={index}
-                  placeholder={"0"}
-                  scorePerDungeon={scorePerDungeon}
-                  setScorePerDungeon={setScorePerDungeon}
-                />
-              ))}
+        <div className={"dungeons-wrapper"}>
+          {dungeonWeeks.map(week => (
+            <div key={week} className={"week-wrapper"}>
+              <h2
+                className={clsx(
+                  "content-heading week-heading",
+                  week.toLowerCase()
+                )}
+              >
+                {week}
+              </h2>
+              <div className={"dungeon-row"}>
+                {currentDungeons.map(index => (
+                  <ScoreCalculatorInput
+                    key={index + "" + week}
+                    inputValue={scorePerDungeon[index][week]?.mythic_level}
+                    week={week}
+                    index={index}
+                    placeholder={"0"}
+                    scorePerDungeon={scorePerDungeon}
+                    setScorePerDungeon={setScorePerDungeon}
+                  />
+                ))}
+              </div>
             </div>
           ))}
         </div>

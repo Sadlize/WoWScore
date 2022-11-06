@@ -65,9 +65,10 @@ const ScoreCalculatorInput = ({
   const rangeStep = rangeMax * 0.02
 
   return (
-    <div className={"dungeon"}>
+    <div className={clsx(index, "dungeon")}>
+      <span>{index}</span>
       <ScoreCalculatorModal visible={modal} setVisible={setModal}>
-        <div className="dungeon-grid">
+        <div className="modal-grid">
           <h2 className={"content-heading"}>{index + " " + week}</h2>
           <input
             value={`${inputValue}`}
