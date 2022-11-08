@@ -1,5 +1,4 @@
-import React from "react"
-import { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { useFetching } from "hooks/useFetching"
 import BattleNet from "API/BattleNet"
 
@@ -8,7 +7,7 @@ const AffixesSchedule = () => {
    *  List of all affixes
    *  in the game
    */
-  const [affixesList, setAffixesList] = useState([])
+  const [affixesList, setAffixesList] = useState(undefined)
   const [fetchAffixesList, isAffixesListLoading, isAffixesListError] =
     useFetching(
       useCallback(async () => {
@@ -52,7 +51,7 @@ const AffixesSchedule = () => {
           <>
             {isAffixesListError ? (
               <span>Request error</span>
-            ) : (
+            ) : affixesList !== undefined ? (
               weeks.map(key => (
                 <div key={key}>
                   {affixesSchedule[key].map(affix => (
@@ -63,7 +62,7 @@ const AffixesSchedule = () => {
                         affixesList[affix]?.id
                       }
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noreferrer noopener"
                     >
                       <img
                         src={affixesList[affix]?.icon}
@@ -73,7 +72,7 @@ const AffixesSchedule = () => {
                   ))}
                 </div>
               ))
-            )}
+            ) : null}
           </>
         )}
       </div>
